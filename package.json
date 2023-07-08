@@ -8,7 +8,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "tsc": "tsc",
-    "update:expo-cli": "expo-cli upgrade"
+    "update:expo-cli": "expo-cli upgrade",
+    "update": "ncu -u --timeout 300000"
   },
   "dependencies": {
     "@types/react": "~18.0.27",
