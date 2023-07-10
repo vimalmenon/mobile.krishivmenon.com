@@ -1,36 +1,25 @@
 import { Text, View } from 'react-native';
-import { mainStyle } from "../src/style/main.style";
 import { PaperProvider, Button } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-type RootStackParamList = {
-  Home: {
-    id: number,
-  }
-};
-
-type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
+import { Home } from "./Home";
+import { Gallery } from "./Gallery";
+import { RootStackParamList } from "../src/types";
 
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-const HomeScreen: React.FC<Props> = () => {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-    </View>
-  );
-}
+
 const App: React.FC = () => {
   return (
     <NavigationContainer>
       <PaperProvider>
         <Stack.Navigator>
-          <Stack.Screen name="Home" component={HomeScreen} initialParams={{ id: 1 }} />
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Gallery" component={Gallery} />
         </Stack.Navigator>
-        <View style={mainStyle.container}>
+        <View>
           <Text>This is the App for Krishiv Menon</Text>
           <Button icon="camera" mode="contained" onPress={() => console.log('Pressed')}>
             Press me
