@@ -10,7 +10,7 @@ export const Header: React.FC = () => {
   return (
     <View>
       <Appbar.Header>
-        <Appbar.BackAction onPress={onClick} />
+        <Appbar.Action icon="menu" onPress={onClick} />
         <Appbar.Content title={currentPage} />
         <Appbar.Action icon="magnify" onPress={onClick} />
         <Appbar.Action icon="dots-vertical" onPress={onClick} />
