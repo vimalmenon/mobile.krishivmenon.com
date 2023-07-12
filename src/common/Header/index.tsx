@@ -1,6 +1,5 @@
 import { Appbar } from 'react-native-paper';
 import { View } from 'react-native';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { useAppContext } from '../../context';
 
 export const Header: React.FC = () => {

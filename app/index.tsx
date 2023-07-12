@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { Home, Gallery, Notes } from "../src/pages";
-import { RootStackParamList } from "../src/types";
+import { RootStackParamList } from "@types";
 import { Header, Navigation } from "../src/common";
 import { AppContext } from "../src/context"
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { IAppContext } from "../types";
+import { IAppContext } from "@types";
 import { NotImplemented } from "../utility";
 
 export const AppContext = React.createContext<IAppContext>({

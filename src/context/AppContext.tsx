@@ -1,5 +1,5 @@
 import React from "react";
-import { ReactChildren, Pages } from "../types";
+import { ReactChildren, Pages } from "@types";
 import { AppContext as AppContextService } from "./service";
 
 export const AppContext: React.FC<ReactChildren> = ({ children }) => {
