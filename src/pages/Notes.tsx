@@ -6,4 +6,4 @@ export const Notes: React.FC = () => {
       <Text>Notes Screen</Text>
     </View>
   );
-}
+};

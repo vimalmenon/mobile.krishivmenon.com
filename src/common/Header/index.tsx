@@ -1,11 +1,12 @@
-import { Appbar } from 'react-native-paper';
 import { View } from 'react-native';
+import { Appbar } from 'react-native-paper';
+
 import { useAppContext } from '../../context';
 
 export const Header: React.FC = () => {
   const onClick = () => {
-    console.log("this is called")
-  }
+    console.log('this is called');
+  };
   const { currentPage } = useAppContext();
   return (
     <View>
@@ -17,4 +18,4 @@ export const Header: React.FC = () => {
       </Appbar.Header>
     </View>
   );
-}
+};

@@ -1,7 +1,8 @@
-import { ReactNode, Dispatch, SetStateAction } from "react";
+import { ReactNode, Dispatch, SetStateAction } from 'react';
+
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-export type Pages = "Home" | "Gallery" | "Notes";
+export type Pages = 'Home' | 'Gallery' | 'Notes';
 
 export type RootStackParamList = {
   Home: undefined;
@@ -18,4 +19,4 @@ export interface IAppContext {
   setCurrentPage: Dispatch<SetStateAction<Pages>>;
 }
 
-export type NavigationProps = NativeStackNavigationProp<RootStackParamList>
+export type NavigationProps = NativeStackNavigationProp<RootStackParamList>;

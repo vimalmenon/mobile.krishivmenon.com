@@ -1,6 +1,6 @@
-import { Text, View } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from "@types";
+import { RootStackParamList } from '@types';
+import { Text, View } from 'react-native';
 
 type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
@@ -10,4 +10,4 @@ export const Home: React.FC<HomeProps> = () => {
       <Text>Home Screen</Text>
     </View>
   );
-}
+};

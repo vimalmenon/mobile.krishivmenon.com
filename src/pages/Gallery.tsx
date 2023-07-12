@@ -6,4 +6,4 @@ export const Gallery: React.FC = () => {
       <Text>Gallery Screen</Text>
     </View>
   );
-}
+};
