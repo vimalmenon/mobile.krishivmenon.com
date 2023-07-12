@@ -1,2 +1,2 @@
 export { AppContext } from './AppContext';
-export { useAppContext } from './service';
+export { useAppContext, useDrawerHelper } from './service';

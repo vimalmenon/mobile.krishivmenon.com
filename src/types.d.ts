@@ -17,6 +17,8 @@ export interface ReactChildren {
 export interface IAppContext {
   currentPage: Pages;
   setCurrentPage: Dispatch<SetStateAction<Pages>>;
+  drawerOpen: boolean;
+  setDrawerOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 export type NavigationProps = NativeStackNavigationProp<RootStackParamList>;

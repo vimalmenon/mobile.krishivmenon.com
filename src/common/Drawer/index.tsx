@@ -1,26 +1,21 @@
 import React from 'react';
 
-import { Button, Text } from 'react-native';
+import { useDrawerHelper } from '@context';
+import { ReactChildren } from '@types';
+import { Text } from 'react-native';
 import { Drawer as ReactDrawer } from 'react-native-drawer-layout';
 
-import { ReactChildren } from '../../types';
-
 export const Drawer: React.FC<ReactChildren> = ({ children }) => {
-  const [open, setOpen] = React.useState(false);
-
+  const { drawerOpen, onOpen, onClose } = useDrawerHelper();
   return (
     <ReactDrawer
-      open={open}
-      onOpen={() => setOpen(true)}
-      onClose={() => setOpen(false)}
+      open={drawerOpen}
+      onOpen={onOpen}
+      onClose={onClose}
       renderDrawerContent={() => {
         return <Text>Drawer content</Text>;
       }}
     >
-      <Button
-        onPress={() => setOpen((prevOpen) => !prevOpen)}
-        title={`${open ? 'Close' : 'Open'} drawer`}
-      />
       {children}
     </ReactDrawer>
   );

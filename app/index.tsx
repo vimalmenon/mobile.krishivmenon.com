@@ -1,11 +1,10 @@
 import { Header, Navigation, Drawer } from '@common';
+import { AppContext } from '@context';
 import { Home, Gallery, Notes } from '@pages';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from '@types';
 import { PaperProvider } from 'react-native-paper';
-
-import { AppContext } from '../src/context';
 
 import 'react-native-gesture-handler';
 
