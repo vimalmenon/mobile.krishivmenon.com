@@ -1,4 +1,4 @@
-import { Header, Navigation, Drawer } from '@common';
+import { Header, Drawer } from '@common';
 import { AppContext } from '@context';
 import { Home, Gallery, Notes } from '@pages';
 import { NavigationContainer } from '@react-navigation/native';
@@ -28,7 +28,6 @@ const App: React.FC = () => {
               <Stack.Screen name="Notes" component={Notes} />
             </Stack.Navigator>
           </Drawer>
-          <Navigation />
         </PaperProvider>
       </AppContext>
     </NavigationContainer>

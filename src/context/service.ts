@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { IAppContext } from '@types';
+import { useNavigation } from '@react-navigation/native';
+import { IAppContext, NavigationProps, Pages } from '@types';
 
 import { NotImplemented } from '../utility';
 
@@ -35,5 +36,19 @@ export const useDrawerHelper = () => {
     onToggle,
     onOpen,
     onClose,
+  };
+};
+
+export const useNavigationHelper = () => {
+  const navigation = useNavigation<NavigationProps>();
+  const { currentPage, setCurrentPage, setDrawerOpen } = React.useContext<IAppContext>(AppContext);
+  const onNavigate = (value: Pages) => {
+    setCurrentPage(value);
+    navigation.navigate(value);
+    setDrawerOpen(false);
+  };
+  return {
+    currentPage,
+    onNavigate,
   };
 };
