@@ -1,5 +1,4 @@
 [Feature] Learn react native
-[Enhancement] Setting up Eslint
 [Enhancement] Deploy the app
 [Feature] Setting up Auth
 [Feature] Setting CI with github action
