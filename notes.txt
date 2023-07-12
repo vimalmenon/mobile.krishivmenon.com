@@ -7,3 +7,4 @@
 
 https://callstack.github.io/react-native-paper/docs/guides/getting-started/
 https://reactnavigation.org/docs/status-bar
+https://pictogrammers.com/library/mdi/

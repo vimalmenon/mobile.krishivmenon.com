@@ -1,42 +1,36 @@
-import { Text, View } from 'react-native';
-import { PaperProvider, Button } from 'react-native-paper';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { PaperProvider } from 'react-native-paper';
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 
 
 import { Home } from "./Home";
 import { Gallery } from "./Gallery";
 import { RootStackParamList } from "../src/types";
+import { Header, Navigation } from "../src/common";
+import { AppContext } from "../src/context"
 
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-const Navigation: React.FC = () => {
-  const navigation = useNavigation<any>()
-  return (
-    <View>
-      <Button mode="contained" onPress={() => navigation.navigate("Home")}>
-        Home
-      </Button>
-      <Button mode="contained" onPress={() => navigation.navigate("Gallery")}>
-        Gallery
-      </Button>
-    </View>
-  )
-}
-
 const App: React.FC = () => {
   return (
     <NavigationContainer>
-      <PaperProvider>
-        <Stack.Navigator>
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Gallery" component={Gallery} />
-        </Stack.Navigator>
-        <View>
+      <AppContext>
+        <PaperProvider>
+          <Header />
+          <Stack.Navigator
+            screenOptions={{
+              headerShown: false
+            }}
+            initialRouteName="Home">
+            <Stack.Screen name="Home" component={Home} options={{ title: "Home" }} />
+            <Stack.Screen name="Gallery" component={Gallery} options={{ title: "Gallery" }} />
+          </Stack.Navigator>
           <Navigation />
-        </View>
-      </PaperProvider>
+        </PaperProvider>
+      </AppContext>
+
     </NavigationContainer>
   );
 }
