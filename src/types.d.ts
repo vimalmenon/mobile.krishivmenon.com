@@ -13,6 +13,7 @@ export type RootStackParamList = {
   Home: undefined;
   Gallery: undefined;
   Notes: undefined;
+  Login: undefined;
 };
 
 export interface ReactChildren {
@@ -24,6 +25,8 @@ export interface IAppContext {
   setCurrentPage: Dispatch<SetStateAction<Pages>>;
   drawerOpen: boolean;
   setDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  token: string | undefined;
+  setToken: Dispatch<SetStateAction<string | undefined>>;
 }
 
 export type NavigationProps = NativeStackNavigationProp<RootStackParamList>;

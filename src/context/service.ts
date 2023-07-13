@@ -9,6 +9,17 @@ import {
   IGenericReturn,
   IGenericParam,
 } from '@types';
+// import { authorize } from 'react-native-app-auth';
+
+// const config = {
+//   clientId: '<YOUR_CLIENT_ID>',
+//   redirectUrl: 'com.myclientapp://myclient/redirect',
+//   serviceConfiguration: {
+//     authorizationEndpoint: '<YOUR_DOMAIN_NAME>/oauth2/authorize',
+//     tokenEndpoint: '<YOUR_DOMAIN_NAME>/oauth2/token',
+//     revocationEndpoint: '<YOUR_DOMAIN_NAME>/oauth2/revoke',
+//   },
+// };
 
 import { IUseAppContextReturn, IUseDrawerHelperReturn, IUseNavigationHelperReturn } from './types';
 import { NotImplemented } from '../utility';
@@ -18,6 +29,8 @@ export const AppContext = React.createContext<IAppContext>({
   setCurrentPage: NotImplemented,
   drawerOpen: false,
   setDrawerOpen: NotImplemented,
+  token: undefined,
+  setToken: NotImplemented,
 });
 
 export const useAppContext: IGenericReturn<IUseAppContextReturn> = () => {
@@ -58,5 +71,12 @@ export const useNavigationHelper: IGenericReturn<IUseNavigationHelperReturn> = (
   return {
     currentPage,
     onNavigate,
+  };
+};
+
+export const useAuth = () => {
+  const { token } = React.useContext<IAppContext>(AppContext);
+  return {
+    token,
   };
 };
