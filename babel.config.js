@@ -12,6 +12,7 @@ module.exports = function (api) {
             '@common': './src/common',
             '@pages': './src/pages',
             '@context': './src/context',
+            '@data': './src/data',
           },
         },
       ],

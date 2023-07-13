@@ -1,15 +1,26 @@
 import React from 'react';
 
-import { useNavigationHelper } from '@context';
+import { useNavigationHelper, useAuth } from '@context';
+import { PagesAuthorized, Pages } from '@data';
 import { Drawer } from 'react-native-paper';
 
 export const DrawerNavigation: React.FC = () => {
-  const { onNavigate } = useNavigationHelper();
+  const { onNavigate, currentPage } = useNavigationHelper();
+  const { token } = useAuth();
+  const selectedDrawer = token ? PagesAuthorized : Pages;
   return (
     <React.Fragment>
-      <Drawer.Item icon="home" label="Home" onPress={() => onNavigate('Home')} />
-      <Drawer.Item icon="view-gallery" label="Gallery" onPress={() => onNavigate('Gallery')} />
-      <Drawer.Item icon="note" label="Notes" onPress={() => onNavigate('Notes')} />
+      {selectedDrawer.map((page) => {
+        return (
+          <Drawer.Item
+            key={page.name}
+            icon={page.icon}
+            label={page.name}
+            onPress={() => onNavigate(page.name)}
+            active={currentPage === page.name}
+          />
+        );
+      })}
     </React.Fragment>
   );
 };
