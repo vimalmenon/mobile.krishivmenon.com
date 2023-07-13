@@ -3,6 +3,8 @@
 [Feature] Setting up Auth
 [Feature] Setting CI with github action
 [Feature] Setting up CD
+[Feature] Auth login
+
 
 https://callstack.github.io/react-native-paper/docs/guides/getting-started/
 https://reactnavigation.org/docs/status-bar
