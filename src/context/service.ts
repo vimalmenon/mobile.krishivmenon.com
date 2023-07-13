@@ -1,8 +1,16 @@
 import React from 'react';
 
 import { useNavigation } from '@react-navigation/native';
-import { IAppContext, NavigationProps, Pages } from '@types';
+import {
+  IAppContext,
+  NavigationProps,
+  Pages,
+  IGenericMethod,
+  IGenericReturn,
+  IGenericParam,
+} from '@types';
 
+import { IUseAppContextReturn, IUseDrawerHelperReturn, IUseNavigationHelperReturn } from './types';
 import { NotImplemented } from '../utility';
 
 export const AppContext = React.createContext<IAppContext>({
@@ -12,7 +20,7 @@ export const AppContext = React.createContext<IAppContext>({
   setDrawerOpen: NotImplemented,
 });
 
-export const useAppContext = () => {
+export const useAppContext: IGenericReturn<IUseAppContextReturn> = () => {
   const { currentPage, setCurrentPage } = React.useContext<IAppContext>(AppContext);
   return {
     currentPage,
@@ -20,15 +28,15 @@ export const useAppContext = () => {
   };
 };
 
-export const useDrawerHelper = () => {
+export const useDrawerHelper: IGenericReturn<IUseDrawerHelperReturn> = () => {
   const { drawerOpen, setDrawerOpen } = React.useContext<IAppContext>(AppContext);
-  const onOpen = () => {
+  const onOpen: IGenericMethod = () => {
     setDrawerOpen(true);
   };
-  const onClose = () => {
+  const onClose: IGenericMethod = () => {
     setDrawerOpen(false);
   };
-  const onToggle = () => {
+  const onToggle: IGenericMethod = () => {
     setDrawerOpen(!drawerOpen);
   };
   return {
@@ -39,10 +47,10 @@ export const useDrawerHelper = () => {
   };
 };
 
-export const useNavigationHelper = () => {
+export const useNavigationHelper: IGenericReturn<IUseNavigationHelperReturn> = () => {
   const navigation = useNavigation<NavigationProps>();
   const { currentPage, setCurrentPage, setDrawerOpen } = React.useContext<IAppContext>(AppContext);
-  const onNavigate = (value: Pages) => {
+  const onNavigate: IGenericParam<Pages> = (value) => {
     setCurrentPage(value);
     navigation.navigate(value);
     setDrawerOpen(false);
