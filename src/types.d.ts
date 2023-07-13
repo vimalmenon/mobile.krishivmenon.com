@@ -29,4 +29,10 @@ export interface IAppContext {
   setToken: Dispatch<SetStateAction<string | undefined>>;
 }
 
+export interface IPage {
+  name: string;
+  component: any;
+  icon: string;
+}
+
 export type NavigationProps = NativeStackNavigationProp<RootStackParamList>;
