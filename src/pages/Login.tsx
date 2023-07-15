@@ -1,13 +1,12 @@
 import React from 'react';
 
 import { useAuth } from '@context';
-import { Text, View, Button } from 'react-native';
+import { View, Button } from 'react-native';
 
 export const Login: React.FC = () => {
   const { promptAsync } = useAuth();
   return (
     <View>
-      <Text>Login Page</Text>
       <Button
         title="Google Login"
         onPress={() => {

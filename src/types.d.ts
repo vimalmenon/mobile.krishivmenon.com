@@ -44,3 +44,20 @@ export interface IPage {
 }
 
 export type NavigationProps = NativeStackNavigationProp<RootStackParamList>;
+
+export type MethodType = 'GET' | 'POST' | 'PUT' | 'DELETE';
+
+export interface IApi<T = unknown> {
+  baseURL: string;
+  url: string;
+  method?: MethodType;
+  data?: T;
+  params?: Record<string, string>;
+  headers?: Record<string, string>;
+}
+
+export interface IBaseResponse<T = unknown> {
+  message: string;
+  data: T;
+  code: number;
+}
