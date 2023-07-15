@@ -8,6 +8,7 @@
 [Feature] Make API call
 [Feature] View and Add Notes
 [Feature] View Gallery
+[Bug] Fix the Cyclic error
 
 
 https://callstack.github.io/react-native-paper/docs/guides/getting-started/

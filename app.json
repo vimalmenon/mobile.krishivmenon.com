@@ -7,7 +7,7 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "entryPoint": "./app/index.tsx",
-    "scheme": "https://krishivmenon.com/",
+    "scheme": "krishivmenon",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",

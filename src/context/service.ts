@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { AuthUrl } from '@data';
 import { useNavigation } from '@react-navigation/native';
 import {
   IAppContext,
@@ -9,12 +10,14 @@ import {
   IGenericReturn,
   IGenericParam,
 } from '@types';
+import { createURL } from 'expo-linking';
 
 import {
   IUseAppContextReturn,
   IUseDrawerHelperReturn,
   IUseNavigationHelperReturn,
   IUseAuthReturn,
+  IUseAuthHelperReturn,
 } from './types';
 import { NotImplemented } from '../utility';
 
@@ -23,8 +26,10 @@ export const AppContext = React.createContext<IAppContext>({
   setCurrentPage: NotImplemented,
   drawerOpen: false,
   setDrawerOpen: NotImplemented,
-  token: undefined,
-  setToken: NotImplemented,
+  authTokens: undefined,
+  setAuthTokens: NotImplemented,
+  promptAsync: NotImplemented,
+  logout: NotImplemented,
 });
 
 export const useAppContext: IGenericReturn<IUseAppContextReturn> = () => {
@@ -69,8 +74,26 @@ export const useNavigationHelper: IGenericReturn<IUseNavigationHelperReturn> = (
 };
 
 export const useAuth: IGenericReturn<IUseAuthReturn> = () => {
-  const { token } = React.useContext<IAppContext>(AppContext);
+  const { authTokens, promptAsync, logout } = React.useContext<IAppContext>(AppContext);
   return {
-    token,
+    logout,
+    authTokens,
+    promptAsync,
+  };
+};
+
+export const useAuthHelper: IGenericReturn<IUseAuthHelperReturn> = () => {
+  const redirectUri = createURL('/');
+  const discoveryDocument = React.useMemo(
+    () => ({
+      authorizationEndpoint: AuthUrl + '/oauth2/authorize',
+      tokenEndpoint: AuthUrl + '/oauth2/token',
+      revocationEndpoint: AuthUrl + '/oauth2/revoke',
+    }),
+    [AuthUrl]
+  );
+  return {
+    redirectUri,
+    discoveryDocument,
   };
 };

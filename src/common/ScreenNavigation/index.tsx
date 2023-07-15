@@ -8,14 +8,14 @@ import 'react-native-gesture-handler';
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export const ScreenNavigation: React.FC = () => {
-  const { token } = useAuth();
-  const selectedScreen = token ? PagesAuthorized : Pages;
+  const { authTokens } = useAuth();
+  const selectedScreen = authTokens ? PagesAuthorized : Pages;
   return (
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName={token ? 'Home' : 'Login'}
+      initialRouteName={authTokens ? 'Home' : 'Login'}
     >
       {selectedScreen.map((page) => {
         return <Stack.Screen key={page.name} name={page.name} component={page.component} />;

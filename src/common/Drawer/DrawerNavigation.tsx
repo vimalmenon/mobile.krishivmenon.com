@@ -6,8 +6,8 @@ import { Drawer } from 'react-native-paper';
 
 export const DrawerNavigation: React.FC = () => {
   const { onNavigate, currentPage } = useNavigationHelper();
-  const { token } = useAuth();
-  const selectedDrawer = token ? PagesAuthorized : Pages;
+  const { authTokens } = useAuth();
+  const selectedDrawer = authTokens ? PagesAuthorized : Pages;
   return (
     <React.Fragment>
       {selectedDrawer.map((page) => {

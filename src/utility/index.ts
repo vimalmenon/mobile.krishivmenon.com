@@ -1,5 +1,5 @@
-import { IGenericMethod } from '@types';
+import { AnyType } from '@types';
 
-export const NotImplemented: IGenericMethod = () => {
+export const NotImplemented: AnyType = () => {
   throw new Error('Function not implemented');
 };

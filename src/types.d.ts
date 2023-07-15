@@ -1,6 +1,7 @@
 import { ReactNode, Dispatch, SetStateAction } from 'react';
 
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { AuthRequestPromptOptions, AuthSessionResult, TokenResponse } from 'expo-auth-session';
 
 export type IGenericMethod = () => void;
 export type IGenericReturn<T> = () => T;
@@ -11,6 +12,8 @@ export type IGeneric<T, K> = (v: T) => K;
 export type AnyType = any;
 
 export type Pages = 'Home' | 'Gallery' | 'Notes' | 'Login';
+
+export type PromptAsyncType = (options?: AuthRequestPromptOptions) => Promise<AuthSessionResult>;
 
 export type RootStackParamList = {
   Home: undefined;
@@ -28,8 +31,10 @@ export interface IAppContext {
   setCurrentPage: Dispatch<SetStateAction<Pages>>;
   drawerOpen: boolean;
   setDrawerOpen: Dispatch<SetStateAction<boolean>>;
-  token: string | undefined;
-  setToken: Dispatch<SetStateAction<string | undefined>>;
+  authTokens: TokenResponse | undefined;
+  setAuthTokens: Dispatch<SetStateAction<TokenResponse | undefined>>;
+  promptAsync: PromptAsyncType;
+  logout: IGenericReturn<Promise<void>>;
 }
 
 export interface IPage {
