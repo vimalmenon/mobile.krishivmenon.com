@@ -10,12 +10,12 @@ export const useQuery = () => {
     () =>
       axios.create({
         headers: {
-          Authorization: authTokens?.accessToken || '',
+          Authorization: authTokens?.idToken || '',
         },
       }),
-    [authTokens?.accessToken]
+    [authTokens?.idToken]
   );
-  function makeApiCall<K, T>(value: IApi<T>): Promise<K> {
+  function makeApiCall<K = unknown, T = unknown>(value: IApi<T>): Promise<K> {
     return instance
       .request<IBaseResponse<K>>(value)
       .then((result) => result.data)
