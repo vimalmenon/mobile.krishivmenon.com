@@ -1,5 +1,5 @@
 import { useAuth } from '@context';
-import { PagesAuthorized, Pages } from '@data';
+import { PagesAuthorized, Pages } from '@pages';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from '@types';
 

@@ -9,7 +9,7 @@ export const Login: React.FC = () => {
     <View>
       <Text>Login Page</Text>
       <Button
-        title="Passwordless Login"
+        title="Google Login"
         onPress={() => {
           promptAsync();
         }}

@@ -31,7 +31,7 @@ export const AppContext: React.FC<ReactChildren> = ({ children }) => {
     discoveryDocument
   );
   React.useEffect(() => {
-    const exchangeFn = async (exchangeTokenReq: AccessTokenRequestConfig) => {
+    const exchangeFn = async (exchangeTokenReq: AccessTokenRequestConfig): Promise<void> => {
       try {
         const exchangeTokenResponse = await exchangeCodeAsync(exchangeTokenReq, discoveryDocument);
         setAuthTokens(exchangeTokenResponse);

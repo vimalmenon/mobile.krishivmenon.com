@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useNavigationHelper, useAuth } from '@context';
-import { PagesAuthorized, Pages } from '@data';
+import { PagesAuthorized, Pages } from '@pages';
 import { Drawer } from 'react-native-paper';
 
 export const DrawerNavigation: React.FC = () => {
