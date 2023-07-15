@@ -31,4 +31,4 @@ export const GalleryPage: IPage = {
 
 export const PagesAuthorized = [HomePage, GalleryPage, NotesPage];
 
-export const Pages = [LoginPage];
+export const PagesUnauthorized = [LoginPage];

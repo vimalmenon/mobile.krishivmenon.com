@@ -21,6 +21,7 @@ export interface IUseAppContextReturn {
 }
 
 export interface IUseAuthReturn {
+  authenticating: boolean;
   authTokens: TokenResponse | undefined;
   promptAsync: PromptAsyncType;
   logout: IGenericReturn<Promise<void>>;

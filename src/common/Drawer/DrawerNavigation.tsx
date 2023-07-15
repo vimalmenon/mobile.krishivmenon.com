@@ -1,13 +1,13 @@
 import React from 'react';
 
 import { useNavigationHelper, useAuth } from '@context';
-import { PagesAuthorized, Pages } from '@pages';
+import { PagesAuthorized, PagesUnauthorized } from '@pages';
 import { Drawer } from 'react-native-paper';
 
 export const DrawerNavigation: React.FC = () => {
   const { onNavigate, currentPage } = useNavigationHelper();
   const { authTokens } = useAuth();
-  const selectedDrawer = authTokens ? PagesAuthorized : Pages;
+  const selectedDrawer = authTokens ? PagesAuthorized : PagesUnauthorized;
   return (
     <React.Fragment>
       {selectedDrawer.map((page) => {

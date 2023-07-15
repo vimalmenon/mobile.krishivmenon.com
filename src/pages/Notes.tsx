@@ -2,13 +2,14 @@ import React from 'react';
 
 import { apis } from '@data';
 import { useQuery } from '@hooks';
+import { INotes } from '@types';
 import { Text, View } from 'react-native';
 
 export const Notes: React.FC = () => {
-  const [notes, setNotes] = React.useState<any[]>([]);
+  const [notes, setNotes] = React.useState<INotes[]>([]);
   const { makeApiCall } = useQuery();
   React.useEffect(() => {
-    makeApiCall<any[], any>(apis.getNotes())
+    makeApiCall<INotes[]>(apis.getNotes())
       .then((data) => {
         setNotes(data);
       })
@@ -18,7 +19,9 @@ export const Notes: React.FC = () => {
   }, []);
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Notes Screen</Text>
+      {notes.map((note) => {
+        return <Text key={note.id}>{note.title}</Text>;
+      })}
     </View>
   );
 };

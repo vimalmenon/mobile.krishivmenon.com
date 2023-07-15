@@ -22,6 +22,7 @@ import {
 import { NotImplemented } from '../utility';
 
 export const AppContext = React.createContext<IAppContext>({
+  authenticating: false,
   currentPage: 'Home',
   setCurrentPage: NotImplemented,
   drawerOpen: false,
@@ -74,11 +75,13 @@ export const useNavigationHelper: IGenericReturn<IUseNavigationHelperReturn> = (
 };
 
 export const useAuth: IGenericReturn<IUseAuthReturn> = () => {
-  const { authTokens, promptAsync, logout } = React.useContext<IAppContext>(AppContext);
+  const { authTokens, promptAsync, logout, authenticating } =
+    React.useContext<IAppContext>(AppContext);
   return {
     logout,
     authTokens,
     promptAsync,
+    authenticating,
   };
 };
 

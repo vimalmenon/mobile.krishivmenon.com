@@ -14,9 +14,10 @@ import {
 import { AppContext as AppContextService, useAuthHelper } from './service';
 
 export const AppContext: React.FC<ReactChildren> = ({ children }) => {
-  const [currentPage, setCurrentPage] = React.useState<Pages>('Home');
+  const [currentPage, setCurrentPage] = React.useState<Pages>('Login');
   const [drawerOpen, setDrawerOpen] = React.useState<boolean>(false);
   const [authTokens, setAuthTokens] = React.useState<TokenResponse | undefined>();
+  const [authenticating, setAuthenticating] = React.useState<boolean>(false);
   const { redirectUri, discoveryDocument } = useAuthHelper();
   const [request, response, promptAsync] = useAuthRequest(
     {
@@ -37,12 +38,16 @@ export const AppContext: React.FC<ReactChildren> = ({ children }) => {
         setAuthTokens(exchangeTokenResponse);
       } catch (error) {
         console.error(error);
+      } finally {
+        setAuthenticating(false);
       }
     };
     if (response) {
-      // if (response.error) {
-      //   return;
-      // }
+      if (response.type === 'cancel') {
+        setAuthenticating(false);
+        return;
+      }
+      setAuthenticating(true);
       if (response.type === 'success') {
         exchangeFn({
           clientId: ClientId,
@@ -73,6 +78,7 @@ export const AppContext: React.FC<ReactChildren> = ({ children }) => {
   return (
     <AppContextService.Provider
       value={{
+        authenticating,
         currentPage,
         setCurrentPage,
         drawerOpen,

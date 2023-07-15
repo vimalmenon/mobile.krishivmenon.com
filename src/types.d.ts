@@ -27,6 +27,7 @@ export interface ReactChildren {
 }
 
 export interface IAppContext {
+  authenticating: boolean;
   currentPage: Pages;
   setCurrentPage: Dispatch<SetStateAction<Pages>>;
   drawerOpen: boolean;
@@ -60,4 +61,17 @@ export interface IBaseResponse<T = unknown> {
   message: string;
   data: T;
   code: number;
+}
+
+export interface IBaseDB {
+  createdBy?: string;
+  createdDate?: string;
+  updatedDate?: string;
+}
+
+export interface INotes extends IBaseDB {
+  id?: string;
+  title: string;
+  content: string;
+  metadata: Record<string, string>;
 }
