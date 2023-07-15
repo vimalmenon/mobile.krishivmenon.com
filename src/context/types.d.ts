@@ -18,3 +18,7 @@ export interface IUseAppContextReturn {
   currentPage: Pages;
   setCurrentPage: React.Dispatch<React.SetStateAction<Pages>>;
 }
+
+export interface IUseAuthReturn {
+  token: string | undefined;
+}

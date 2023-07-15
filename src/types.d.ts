@@ -7,6 +7,9 @@ export type IGenericReturn<T> = () => T;
 export type IGenericParam<T> = (v: T) => void;
 export type IGeneric<T, K> = (v: T) => K;
 
+// eslint-disable-next-line  @typescript-eslint/no-explicit-any
+export type AnyType = any;
+
 export type Pages = 'Home' | 'Gallery' | 'Notes' | 'Login';
 
 export type RootStackParamList = {
@@ -31,7 +34,7 @@ export interface IAppContext {
 
 export interface IPage {
   name: Pages;
-  component: any;
+  component: AnyType;
   icon: string;
 }
 
