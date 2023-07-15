@@ -24,12 +24,14 @@ export const AppContext: React.FC<ReactChildren> = ({ children }) => {
       responseType: ResponseType.Code,
       redirectUri,
       usePKCE: true,
+      extraParams: {
+        identity_provider: 'Google',
+      },
     },
     discoveryDocument
   );
   React.useEffect(() => {
     const exchangeFn = async (exchangeTokenReq: AccessTokenRequestConfig) => {
-      console.log(exchangeTokenReq);
       try {
         const exchangeTokenResponse = await exchangeCodeAsync(exchangeTokenReq, discoveryDocument);
         setAuthTokens(exchangeTokenResponse);
