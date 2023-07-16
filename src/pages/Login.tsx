@@ -1,35 +1,27 @@
 import React from 'react';
 
 import { useAuth } from '@context';
-import { View, Button, SafeAreaView, Text, StyleSheet } from 'react-native';
+import { View, SafeAreaView, Text } from 'react-native';
+import { Button } from 'react-native-paper';
 
 export const Login: React.FC = () => {
   const { promptAsync } = useAuth();
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.titleContainer}>
+    <SafeAreaView className="flex-1 justify-center">
+      <View className="justify-items-center items-center mb-5">
         <Text>Krishiv Menon</Text>
       </View>
       <View>
         <Button
-          title="Google Login"
+          mode="outlined"
+          icon="google"
           onPress={() => {
             promptAsync();
           }}
-        />
+        >
+          Google
+        </Button>
       </View>
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    justifyContent: 'space-around',
-    flex: 1,
-  },
-  titleContainer: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-});

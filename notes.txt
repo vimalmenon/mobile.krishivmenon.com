@@ -9,7 +9,6 @@
 [Enhancement] Show Screen Properly
 [Feature] Show profile
 [Feature] Ability to Logout
-[Feature] Install tailwind
 
 
 https://callstack.github.io/react-native-paper/docs/guides/getting-started/
