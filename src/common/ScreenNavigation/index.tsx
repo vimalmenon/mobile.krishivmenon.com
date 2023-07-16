@@ -1,4 +1,4 @@
-import { useAuth } from '@context';
+import { useAuth, useNavigationHelper } from '@context';
 import { PagesAuthorized, PagesUnauthorized } from '@pages';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from '@types';
@@ -11,6 +11,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export const ScreenNavigation: React.FC = () => {
   const { authTokens, authenticating } = useAuth();
+  const { currentPage } = useNavigationHelper();
   const selectedScreen = authTokens ? PagesAuthorized : PagesUnauthorized;
   if (authenticating) {
     return <Authenticating />;
@@ -20,7 +21,7 @@ export const ScreenNavigation: React.FC = () => {
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName={authTokens ? 'Home' : 'Login'}
+      initialRouteName={currentPage}
     >
       {selectedScreen.map((page) => {
         return <Stack.Screen key={page.name} name={page.name} component={page.component} />;

@@ -36,6 +36,7 @@ export const AppContext: React.FC<ReactChildren> = ({ children }) => {
       try {
         const exchangeTokenResponse = await exchangeCodeAsync(exchangeTokenReq, discoveryDocument);
         setAuthTokens(exchangeTokenResponse);
+        setCurrentPage('Home');
       } catch (error) {
         console.error(error);
       } finally {
