@@ -1,5 +1,5 @@
 import { ActivityIndicator } from 'react-native-paper';
 
-export const Authenticating: React.FC = () => {
+export const Loading: React.FC = () => {
   return <ActivityIndicator animating={true} />;
 };

@@ -43,6 +43,8 @@ export interface IPage {
   component: AnyType;
   icon: string;
   title: string;
+  showHeader: boolean;
+  showDrawer: boolean;
 }
 
 export type NavigationProps = NativeStackNavigationProp<RootStackParamList>;

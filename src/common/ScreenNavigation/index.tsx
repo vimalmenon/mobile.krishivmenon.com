@@ -3,7 +3,7 @@ import { PagesAuthorized, PagesUnauthorized } from '@pages';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from '@types';
 
-import { Authenticating } from '../Authenticating';
+import { Loading } from '../Loading';
 
 import 'react-native-gesture-handler';
 
@@ -14,7 +14,7 @@ export const ScreenNavigation: React.FC = () => {
   const { currentPage } = useNavigationHelper();
   const selectedScreen = authTokens ? PagesAuthorized : PagesUnauthorized;
   if (authenticating) {
-    return <Authenticating />;
+    return <Loading />;
   }
   return (
     <Stack.Navigator
