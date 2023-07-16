@@ -46,6 +46,7 @@ export interface IPage {
   title: string;
   showHeader: boolean;
   showDrawer: boolean;
+  showInDrawer: boolean;
 }
 
 export type NavigationProps = NativeStackNavigationProp<RootStackParamList>;

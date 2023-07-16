@@ -13,15 +13,18 @@ export const DrawerNavigation: React.FC = () => {
     <React.Fragment>
       <View>
         {selectedDrawer.map((page) => {
-          return (
-            <Drawer.Item
-              key={page.name}
-              icon={page.icon}
-              label={page.name}
-              onPress={() => onNavigate(page.name)}
-              active={currentPage === page.name}
-            />
-          );
+          if (page.showInDrawer) {
+            return (
+              <Drawer.Item
+                key={page.name}
+                icon={page.icon}
+                label={page.name}
+                onPress={() => onNavigate(page.name)}
+                active={currentPage === page.name}
+              />
+            );
+          }
+          return null;
         })}
       </View>
       <View>
