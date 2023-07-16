@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useNavigationHelper, useAuth } from '@context';
 import { PagesAuthorized, PagesUnauthorized } from '@pages';
-import { View } from 'react-native';
+import { View, SafeAreaView } from 'react-native';
 import { Drawer } from 'react-native-paper';
 
 export const DrawerNavigation: React.FC = () => {
@@ -10,7 +10,7 @@ export const DrawerNavigation: React.FC = () => {
   const { authTokens } = useAuth();
   const selectedDrawer = authTokens ? PagesAuthorized : PagesUnauthorized;
   return (
-    <React.Fragment>
+    <SafeAreaView className="flex-1 justify-between">
       <View>
         {selectedDrawer.map((page) => {
           if (page.showInDrawer) {
@@ -28,8 +28,8 @@ export const DrawerNavigation: React.FC = () => {
         })}
       </View>
       <View>
-        <Drawer.Item label="Log out" />
+        <Drawer.Item label="Log out" icon="logout" />
       </View>
-    </React.Fragment>
+    </SafeAreaView>
   );
 };
