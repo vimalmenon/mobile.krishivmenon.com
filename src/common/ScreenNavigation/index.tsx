@@ -14,7 +14,7 @@ export const ScreenNavigation: React.FC = () => {
   const { currentPage } = useNavigationHelper();
   const selectedScreen = authTokens ? PagesAuthorized : PagesUnauthorized;
   if (authenticating) {
-    return <Loading />;
+    return <Loading text="Authenticating" />;
   }
   return (
     <Stack.Navigator
