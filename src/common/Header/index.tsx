@@ -7,13 +7,16 @@ export const Header: React.FC = () => {
   const { currentPage } = useAppContext();
   const { onToggle } = useDrawerHelper();
   const selectedPage = PageMap[currentPage];
-  return (
-    <View>
-      <Appbar.Header>
-        <Appbar.Action icon="menu" onPress={onToggle} />
-        <Appbar.Content title={selectedPage.title} />
-        {/* <Appbar.Action icon="dots-vertical" onPress={onClick} /> */}
-      </Appbar.Header>
-    </View>
-  );
+  if (selectedPage.showHeader) {
+    return (
+      <View>
+        <Appbar.Header>
+          <Appbar.Action icon="menu" onPress={onToggle} />
+          <Appbar.Content title={selectedPage.title} />
+          {/* <Appbar.Action icon="dots-vertical" onPress={onClick} /> */}
+        </Appbar.Header>
+      </View>
+    );
+  }
+  return null;
 };
