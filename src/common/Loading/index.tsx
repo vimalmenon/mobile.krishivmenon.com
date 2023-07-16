@@ -1,29 +1,15 @@
-import { Text, SafeAreaView, StyleSheet, View } from 'react-native';
+import { Text, SafeAreaView, View } from 'react-native';
 import { ActivityIndicator } from 'react-native-paper';
 
 import { ILoading } from './Loading';
 
 export const Loading: React.FC<ILoading> = ({ text }) => {
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Text>{text}</Text>
+    <SafeAreaView className="flex-1 justify-center items-center">
+      <View className="flex flex-row items-center">
         <ActivityIndicator animating={true} size="large" />
+        <Text className="mx-5">{text}</Text>
       </View>
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-  },
-  titleContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'row',
-  },
-});
