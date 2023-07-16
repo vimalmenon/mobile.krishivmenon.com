@@ -11,15 +11,16 @@ export type IGeneric<T, K> = (v: T) => K;
 // eslint-disable-next-line  @typescript-eslint/no-explicit-any
 export type AnyType = any;
 
-export type Pages = 'Home' | 'Gallery' | 'Notes' | 'Login';
+export type Pages = 'Home' | 'Gallery' | 'Notes' | 'Login' | 'NoteDetail';
 
 export type PromptAsyncType = (options?: AuthRequestPromptOptions) => Promise<AuthSessionResult>;
 
 export type RootStackParamList = {
+  Login: undefined;
   Home: undefined;
   Gallery: undefined;
   Notes: undefined;
-  Login: undefined;
+  NoteDetail: INotes;
 };
 
 export interface ReactChildren {

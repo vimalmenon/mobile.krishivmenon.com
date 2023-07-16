@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Pages, IGenericParam, IGenericMethod, PromptAsyncType } from '@types';
+import { Pages, IGenericMethod, PromptAsyncType } from '@types';
 import { DiscoveryDocument, TokenResponse } from 'expo-auth-session';
 
 export interface IUseDrawerHelperReturn {
@@ -12,7 +12,7 @@ export interface IUseDrawerHelperReturn {
 
 export interface IUseNavigationHelperReturn {
   currentPage: Pages;
-  onNavigate: IGenericParam<Pages>;
+  onNavigate: <T = unknown>(name: Pages, params?: T) => void;
 }
 
 export interface IUseAppContextReturn {

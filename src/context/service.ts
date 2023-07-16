@@ -2,14 +2,7 @@ import React from 'react';
 
 import { AuthUrl } from '@data';
 import { useNavigation } from '@react-navigation/native';
-import {
-  IAppContext,
-  NavigationProps,
-  Pages,
-  IGenericMethod,
-  IGenericReturn,
-  IGenericParam,
-} from '@types';
+import { IAppContext, NavigationProps, Pages, IGenericMethod, IGenericReturn } from '@types';
 import { createURL } from 'expo-linking';
 
 import {
@@ -63,9 +56,9 @@ export const useDrawerHelper: IGenericReturn<IUseDrawerHelperReturn> = () => {
 export const useNavigationHelper: IGenericReturn<IUseNavigationHelperReturn> = () => {
   const navigation = useNavigation<NavigationProps>();
   const { currentPage, setCurrentPage, setDrawerOpen } = React.useContext<IAppContext>(AppContext);
-  const onNavigate: IGenericParam<Pages> = (value) => {
-    setCurrentPage(value);
-    navigation.navigate(value);
+  const onNavigate = <T = unknown>(name: Pages, params?: T): void => {
+    setCurrentPage(name);
+    navigation.navigate<any>(name, params);
     setDrawerOpen(false);
   };
   return {
