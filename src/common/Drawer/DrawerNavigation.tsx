@@ -7,7 +7,7 @@ import { Drawer } from 'react-native-paper';
 
 export const DrawerNavigation: React.FC = () => {
   const { onNavigate, currentPage } = useNavigationHelper();
-  const { authTokens } = useAuth();
+  const { authTokens, logout } = useAuth();
   const selectedDrawer = authTokens ? PagesAuthorized : PagesUnauthorized;
   return (
     <SafeAreaView className="flex-1 justify-between">
@@ -28,7 +28,7 @@ export const DrawerNavigation: React.FC = () => {
         })}
       </View>
       <View>
-        <Drawer.Item label="Log out" icon="logout" />
+        <Drawer.Item label="Log out" icon="logout" onPress={logout} />
       </View>
     </SafeAreaView>
   );

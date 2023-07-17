@@ -64,9 +64,12 @@ export const AppContext: React.FC<ReactChildren> = ({ children }) => {
   }, [discoveryDocument, request, response]);
   const logout: IGenericReturn<Promise<void>> = async () => {
     if (authTokens) {
+      setDrawerOpen(false);
+      setAuthenticating(true);
       const revokeResponse = await revokeAsync(
         {
           clientId: ClientId,
+          clientSecret: ClientSecret,
           token: authTokens.refreshToken || '',
         },
         discoveryDocument
@@ -74,6 +77,8 @@ export const AppContext: React.FC<ReactChildren> = ({ children }) => {
       if (revokeResponse) {
         setAuthTokens(undefined);
       }
+      setAuthenticating(false);
+      setCurrentPage('Login');
     }
   };
   return (

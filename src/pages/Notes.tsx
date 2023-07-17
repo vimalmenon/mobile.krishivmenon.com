@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Loading } from '@common';
+import { useNavigationHelper } from '@context';
 import { apis } from '@data';
 import { useQuery } from '@hooks';
 import { INotes } from '@types';
@@ -11,6 +12,7 @@ export const Notes: React.FC = () => {
   const [notes, setNotes] = React.useState<INotes[]>([]);
   const [loading, setLoading] = React.useState<boolean>(true);
   const { makeApiCall } = useQuery();
+  const { onNavigate } = useNavigationHelper();
   React.useEffect(() => {
     setLoading(true);
     makeApiCall<INotes[]>(apis.getNotes())
@@ -36,6 +38,7 @@ export const Notes: React.FC = () => {
             <TouchableOpacity
               key={note.id}
               className="flex flex-row items-center justify-between mx-2"
+              onPress={() => onNavigate('NoteDetail', note)}
             >
               <Text className="text-2xl">{note.title}</Text>
               <IconButton icon="close" />
