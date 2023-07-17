@@ -1,10 +1,9 @@
 import { Loading } from '@common';
 import { useAuth } from '@context';
-import { PagesAuthorized, PagesUnauthorized } from '@pages';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from '@types';
 
-import 'react-native-gesture-handler';
+import { PagesAuthorized, PagesUnauthorized } from '.';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

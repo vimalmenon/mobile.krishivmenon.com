@@ -8,6 +8,8 @@ import { INotes } from '@types';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { IconButton } from 'react-native-paper';
 
+import { Layout } from './Layout';
+
 export const Notes: React.FC = () => {
   const [notes, setNotes] = React.useState<INotes[]>([]);
   const [loading, setLoading] = React.useState<boolean>(true);
@@ -31,21 +33,23 @@ export const Notes: React.FC = () => {
   }
 
   return (
-    <View className="flex-1">
-      <View>
-        {notes.map((note) => {
-          return (
-            <TouchableOpacity
-              key={note.id}
-              className="flex flex-row items-center justify-between mx-2"
-              onPress={() => onNavigate('NoteDetail', note)}
-            >
-              <Text className="text-2xl">{note.title}</Text>
-              <IconButton icon="close" />
-            </TouchableOpacity>
-          );
-        })}
+    <Layout>
+      <View className="flex-1">
+        <View>
+          {notes.map((note) => {
+            return (
+              <TouchableOpacity
+                key={note.id}
+                className="flex flex-row items-center justify-between mx-2"
+                onPress={() => onNavigate('NoteDetail', note)}
+              >
+                <Text className="text-2xl">{note.title}</Text>
+                <IconButton icon="close" />
+              </TouchableOpacity>
+            );
+          })}
+        </View>
       </View>
-    </View>
+    </Layout>
   );
 };
