@@ -47,6 +47,7 @@ export interface IPage {
   showHeader: boolean;
   showDrawer: boolean;
   showInDrawer: boolean;
+  headerLeftIcon: 'Menu' | 'Back' | undefined;
 }
 
 export type NavigationProps = NativeStackNavigationProp<RootStackParamList>;

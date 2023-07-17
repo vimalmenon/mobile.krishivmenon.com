@@ -5,11 +5,9 @@
 [Feature] Setting up CD
 [Feature] View and Add Notes
 [Feature] View Gallery
-[Feature] Show loading indicator while Loading
 [Enhancement] Show Screen Properly
 [Feature] Show profile
-[Feature] Ability to Logout
-
+[Bug] Fix the cycling issue
 
 https://callstack.github.io/react-native-paper/docs/guides/getting-started/
 https://reactnavigation.org/docs/status-bar
