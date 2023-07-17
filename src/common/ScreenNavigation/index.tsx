@@ -11,7 +11,6 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export const ScreenNavigation: React.FC = () => {
   const { authTokens, authenticating } = useAuth();
-  const { currentPage } = useNavigationHelper();
   const selectedScreen = authTokens ? PagesAuthorized : PagesUnauthorized;
   if (authenticating) {
     return <Loading text="Authenticating" />;
@@ -21,7 +20,7 @@ export const ScreenNavigation: React.FC = () => {
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName={currentPage}
+      initialRouteName={authTokens ? 'Home' : 'Login'}
     >
       {selectedScreen.map((page) => {
         return <Stack.Screen key={page.name} name={page.name} component={page.component} />;
