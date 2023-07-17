@@ -1,15 +1,14 @@
-import { useAuth, useNavigationHelper } from '@context';
+import { Loading } from '@common';
+import { useAuth } from '@context';
 import { PagesAuthorized, PagesUnauthorized } from '@pages';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from '@types';
-
-import { Loading } from '../Loading';
 
 import 'react-native-gesture-handler';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-export const ScreenNavigation: React.FC = () => {
+export const Screens: React.FC = () => {
   const { authTokens, authenticating } = useAuth();
   const selectedScreen = authTokens ? PagesAuthorized : PagesUnauthorized;
   if (authenticating) {

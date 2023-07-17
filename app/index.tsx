@@ -1,5 +1,6 @@
-import { Header, Drawer, ScreenNavigation } from '@common';
+import { Header, Drawer } from '@common';
 import { AppContext } from '@context';
+import { Screens } from '@pages';
 import { NavigationContainer } from '@react-navigation/native';
 import { maybeCompleteAuthSession } from 'expo-web-browser';
 import { PaperProvider } from 'react-native-paper';
@@ -14,7 +15,7 @@ const App: React.FC = () => {
         <PaperProvider>
           <Header />
           <Drawer>
-            <ScreenNavigation />
+            <Screens />
           </Drawer>
         </PaperProvider>
       </AppContext>
