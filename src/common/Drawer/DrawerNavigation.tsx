@@ -2,8 +2,7 @@ import React from 'react';
 
 import { useNavigationHelper, useAuth } from '@context';
 import { PagesAuthorized, PagesUnauthorized } from '@pages';
-import { useNavigation } from '@react-navigation/native';
-import { StackActions } from '@react-navigation/native';
+import { useNavigation, StackActions } from '@react-navigation/native';
 import { View, SafeAreaView } from 'react-native';
 import { Drawer } from 'react-native-paper';
 
@@ -22,11 +21,7 @@ export const DrawerNavigation: React.FC = () => {
                 key={page.name}
                 icon={page.icon}
                 label={page.name}
-                onPress={() =>
-                  page.navigationType === 'navigate'
-                    ? dispatch(StackActions.push(page.name))
-                    : dispatch(StackActions.replace(page.name))
-                }
+                onPress={() => dispatch(StackActions.replace(page.name))}
                 active={currentPage === page.name}
               />
             );
