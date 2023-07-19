@@ -2,12 +2,15 @@ import React from 'react';
 
 import { useNavigationHelper, useAuth } from '@context';
 import { PagesAuthorized, PagesUnauthorized } from '@pages';
+import { useNavigation } from '@react-navigation/native';
+import { StackActions } from '@react-navigation/native';
 import { View, SafeAreaView } from 'react-native';
 import { Drawer } from 'react-native-paper';
 
 export const DrawerNavigation: React.FC = () => {
-  const { onNavigate, currentPage } = useNavigationHelper();
+  const { currentPage } = useNavigationHelper();
   const { authTokens, logout } = useAuth();
+  const { dispatch } = useNavigation();
   const selectedDrawer = authTokens ? PagesAuthorized : PagesUnauthorized;
   return (
     <SafeAreaView className="flex-1 justify-between">
@@ -19,7 +22,11 @@ export const DrawerNavigation: React.FC = () => {
                 key={page.name}
                 icon={page.icon}
                 label={page.name}
-                onPress={() => onNavigate(page.name)}
+                onPress={() =>
+                  page.navigationType === 'navigate'
+                    ? dispatch(StackActions.push(page.name))
+                    : dispatch(StackActions.replace(page.name))
+                }
                 active={currentPage === page.name}
               />
             );
@@ -28,7 +35,7 @@ export const DrawerNavigation: React.FC = () => {
         })}
       </View>
       <View>
-        <Drawer.Item label="Log out" icon="logout" onPress={logout} />
+        <Drawer.Item label="Logout" icon="logout" onPress={logout} />
       </View>
     </SafeAreaView>
   );

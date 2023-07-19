@@ -57,13 +57,18 @@ export const useNavigationHelper: IGenericReturn<IUseNavigationHelperReturn> = (
   const navigation = useNavigation<NavigationProps>();
   const { currentPage, setCurrentPage, setDrawerOpen } = React.useContext<IAppContext>(AppContext);
   const onNavigate = <T = unknown>(name: Pages, params?: T): void => {
-    setCurrentPage(name);
     navigation.navigate<any>(name, params);
+    setDrawerOpen(false);
+  };
+  const onReplace = <T = unknown>(name: Pages, params?: T): void => {
+    navigation.replace<any>(name, params);
     setDrawerOpen(false);
   };
   return {
     currentPage,
     onNavigate,
+    onReplace,
+    setCurrentPage,
   };
 };
 

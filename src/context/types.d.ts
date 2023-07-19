@@ -13,6 +13,8 @@ export interface IUseDrawerHelperReturn {
 export interface IUseNavigationHelperReturn {
   currentPage: Pages;
   onNavigate: <T = unknown>(name: Pages, params?: T) => void;
+  onReplace: <T = unknown>(name: Pages, params?: T) => void;
+  setCurrentPage: React.Dispatch<React.SetStateAction<Pages>>;
 }
 
 export interface IUseAppContextReturn {

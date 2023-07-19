@@ -1,20 +1,23 @@
 import React from 'react';
 
 import { Loading } from '@common';
-import { useNavigationHelper } from '@context';
 import { apis } from '@data';
 import { useQuery } from '@hooks';
-import { INotes } from '@types';
+import { StackActions, useNavigation } from '@react-navigation/native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { INotes, RootStackParamList } from '@types';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { IconButton } from 'react-native-paper';
 
 import { Layout } from './Layout';
 
-export const Notes: React.FC = () => {
+type NotesProps = NativeStackScreenProps<RootStackParamList, 'Notes'>;
+
+export const Notes: React.FC<NotesProps> = ({ route }) => {
   const [notes, setNotes] = React.useState<INotes[]>([]);
   const [loading, setLoading] = React.useState<boolean>(true);
   const { makeApiCall } = useQuery();
-  const { onNavigate } = useNavigationHelper();
+  const { dispatch } = useNavigation();
   React.useEffect(() => {
     setLoading(true);
     makeApiCall<INotes[]>(apis.getNotes())
@@ -28,27 +31,29 @@ export const Notes: React.FC = () => {
         setLoading(false);
       });
   }, []);
-  if (loading) {
-    return <Loading text="Loading Notes" />;
-  }
-
   return (
-    <Layout>
+    <Layout page={route.name}>
       <View className="flex-1">
-        <View>
-          {notes.map((note) => {
-            return (
-              <TouchableOpacity
-                key={note.id}
-                className="flex flex-row items-center justify-between mx-2"
-                onPress={() => onNavigate('NoteDetail', note)}
-              >
-                <Text className="text-2xl">{note.title}</Text>
-                <IconButton icon="close" />
-              </TouchableOpacity>
-            );
-          })}
-        </View>
+        {loading ? (
+          <View>
+            <Loading text="Loading Notes" />
+          </View>
+        ) : (
+          <View>
+            {notes.map((note) => {
+              return (
+                <TouchableOpacity
+                  key={note.id}
+                  className="flex flex-row items-center justify-between mx-2"
+                  onPress={() => dispatch(StackActions.push('NoteDetail', note))}
+                >
+                  <Text className="text-2xl">{note.title}</Text>
+                  <IconButton icon="close" />
+                </TouchableOpacity>
+              );
+            })}
+          </View>
+        )}
       </View>
     </Layout>
   );

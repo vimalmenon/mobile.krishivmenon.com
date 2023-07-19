@@ -9,7 +9,7 @@ type NoteDetailProps = NativeStackScreenProps<RootStackParamList, 'NoteDetail'>;
 
 export const NoteDetail: React.FC<NoteDetailProps> = ({ route }) => {
   return (
-    <Layout>
+    <Layout page={route.name}>
       <SafeAreaView className="flex-1 px-2">
         <View className="m-2">
           <Text>{route.params.title}</Text>
@@ -17,7 +17,7 @@ export const NoteDetail: React.FC<NoteDetailProps> = ({ route }) => {
         <View>
           <Text>{route.params.content}</Text>
         </View>
-        <View>
+        <View className="flex-1 flex-row">
           <Button>Save</Button>
           <Button>Cancel</Button>
         </View>

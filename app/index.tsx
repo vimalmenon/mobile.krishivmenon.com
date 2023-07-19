@@ -11,16 +11,16 @@ maybeCompleteAuthSession();
 
 const App: React.FC = () => {
   return (
-    <NavigationContainer>
-      <AppContext>
+    <AppContext>
+      <NavigationContainer>
         <PaperProvider>
           <Header />
           <Drawer>
             <Screens />
           </Drawer>
         </PaperProvider>
-      </AppContext>
-    </NavigationContainer>
+      </NavigationContainer>
+    </AppContext>
   );
 };
 

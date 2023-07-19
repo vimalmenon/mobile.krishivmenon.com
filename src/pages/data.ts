@@ -15,6 +15,7 @@ export const LoginPage: IPage = {
   showDrawer: false,
   showInDrawer: false,
   headerLeftIcon: undefined,
+  navigationType: 'navigate',
 };
 
 export const HomePage: IPage = {
@@ -26,6 +27,7 @@ export const HomePage: IPage = {
   showDrawer: true,
   showInDrawer: true,
   headerLeftIcon: 'Menu',
+  navigationType: 'navigate',
 };
 
 export const GalleryPage: IPage = {
@@ -37,6 +39,7 @@ export const GalleryPage: IPage = {
   showDrawer: true,
   showInDrawer: true,
   headerLeftIcon: 'Menu',
+  navigationType: 'replace',
 };
 
 export const NotesPage: IPage = {
@@ -48,6 +51,7 @@ export const NotesPage: IPage = {
   showDrawer: true,
   showInDrawer: true,
   headerLeftIcon: 'Menu',
+  navigationType: 'replace',
 };
 
 export const NoteDetailPage: IPage = {
@@ -59,6 +63,7 @@ export const NoteDetailPage: IPage = {
   showDrawer: false,
   showInDrawer: false,
   headerLeftIcon: 'Back',
+  navigationType: 'navigate',
 };
 export const PagesAuthorized = [HomePage, GalleryPage, NotesPage, NoteDetailPage];
 
