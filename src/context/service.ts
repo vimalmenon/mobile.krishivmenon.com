@@ -3,7 +3,14 @@ import React from 'react';
 import { AuthUrl, apis } from '@data';
 import { useQuery } from '@hooks';
 import { useNavigation } from '@react-navigation/native';
-import { IAppContext, NavigationProps, Pages, IGenericMethod, IGenericReturn } from '@types';
+import {
+  IAppContext,
+  NavigationProps,
+  Pages,
+  IGenericMethod,
+  IGenericReturn,
+  IProfile,
+} from '@types';
 import { createURL } from 'expo-linking';
 
 import {
@@ -102,7 +109,15 @@ export const useAuthHelper: IGenericReturn<IUseAuthHelperReturn> = () => {
 
 export const useProfile = () => {
   const { makeApiCall } = useQuery();
+  const [profile, setProfile] = React.useState<IProfile>();
   React.useEffect(() => {
-    makeApiCall(apis.getProfile());
+    getProfile();
   }, []);
+  const getProfile = async () => {
+    const profile = await makeApiCall<IProfile>(apis.getProfile());
+    setProfile(profile);
+  };
+  return {
+    profile,
+  };
 };
