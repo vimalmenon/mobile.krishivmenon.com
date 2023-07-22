@@ -9,7 +9,7 @@ type GalleryProps = NativeStackScreenProps<RootStackParamList, 'Gallery'>;
 export const Gallery: React.FC<GalleryProps> = ({ route }) => {
   return (
     <Layout page={route.name}>
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <View>
         <Text>Gallery Screen</Text>
       </View>
     </Layout>

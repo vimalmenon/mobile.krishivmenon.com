@@ -35,7 +35,7 @@ export const Notes: React.FC<NotesProps> = ({ route }) => {
     <Layout page={route.name}>
       <View className="flex-1">
         {loading ? (
-          <View>
+          <View className="flex-1">
             <Loading text="Loading Notes" />
           </View>
         ) : (
