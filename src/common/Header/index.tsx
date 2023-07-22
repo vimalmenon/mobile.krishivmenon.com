@@ -1,6 +1,5 @@
 import { useNavigationHelper, useDrawerHelper } from '@context';
-import { useNavigation } from '@react-navigation/native';
-import { StackActions } from '@react-navigation/native';
+import { useNavigation, StackActions } from '@react-navigation/native';
 import { Appbar } from 'react-native-paper';
 
 import { Profile } from './Profile';

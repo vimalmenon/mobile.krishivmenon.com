@@ -7,7 +7,6 @@ import { IAppContext, IGenericMethod, IGenericReturn, IProfile } from '@types';
 import { createURL } from 'expo-linking';
 
 import {
-  IUseAppContextReturn,
   IUseDrawerHelperReturn,
   IUseNavigationHelperReturn,
   IUseAuthReturn,
@@ -26,14 +25,6 @@ export const AppContext = React.createContext<IAppContext>({
   promptAsync: NotImplemented,
   logout: NotImplemented,
 });
-
-export const useAppContext: IGenericReturn<IUseAppContextReturn> = () => {
-  const { currentPage, setCurrentPage } = React.useContext<IAppContext>(AppContext);
-  return {
-    currentPage,
-    setCurrentPage,
-  };
-};
 
 export const useDrawerHelper: IGenericReturn<IUseDrawerHelperReturn> = () => {
   const { drawerOpen, setDrawerOpen } = React.useContext<IAppContext>(AppContext);

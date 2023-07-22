@@ -14,12 +14,6 @@ export interface IUseNavigationHelperReturn {
   currentPage: IPage;
   setCurrentPage: React.Dispatch<React.SetStateAction<IPage>>;
 }
-
-export interface IUseAppContextReturn {
-  currentPage: IPage;
-  setCurrentPage: React.Dispatch<React.SetStateAction<IPage>>;
-}
-
 export interface IUseAuthReturn {
   authenticating: AuthType;
   authTokens: TokenResponse | undefined;
