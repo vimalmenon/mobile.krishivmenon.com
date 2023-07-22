@@ -11,7 +11,9 @@ export const Screens: React.FC = () => {
   const { authTokens, authenticating } = useAuth();
   const selectedScreen = authTokens ? PagesAuthorized : PagesUnauthorized;
   if (authenticating) {
-    return <Loading text="Authenticating" />;
+    return (
+      <Loading text={authenticating === 'Authenticating' ? 'Authenticating' : 'Logging out'} />
+    );
   }
   return (
     <Stack.Navigator

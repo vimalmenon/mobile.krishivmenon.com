@@ -15,7 +15,7 @@ import {
 import { NotImplemented } from '../utility';
 
 export const AppContext = React.createContext<IAppContext>({
-  authenticating: false,
+  authenticating: undefined,
   currentPage: 'Home',
   setCurrentPage: NotImplemented,
   drawerOpen: false,

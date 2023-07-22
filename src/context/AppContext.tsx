@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ClientId, ClientSecret } from '@data';
-import { ReactChildren, Pages, IGenericReturn } from '@types';
+import { ReactChildren, Pages, IGenericReturn, AuthType } from '@types';
 import {
   useAuthRequest,
   exchangeCodeAsync,
@@ -17,7 +17,7 @@ export const AppContext: React.FC<ReactChildren> = ({ children }) => {
   const [currentPage, setCurrentPage] = React.useState<Pages>('Login');
   const [drawerOpen, setDrawerOpen] = React.useState<boolean>(false);
   const [authTokens, setAuthTokens] = React.useState<TokenResponse | undefined>();
-  const [authenticating, setAuthenticating] = React.useState<boolean>(false);
+  const [authenticating, setAuthenticating] = React.useState<AuthType>();
   const { redirectUri, discoveryDocument } = useAuthHelper();
   const [request, response, promptAsync] = useAuthRequest(
     {
@@ -40,15 +40,15 @@ export const AppContext: React.FC<ReactChildren> = ({ children }) => {
       } catch (error) {
         console.error(error);
       } finally {
-        setAuthenticating(false);
+        setAuthenticating(undefined);
       }
     };
     if (response) {
       if (response.type === 'cancel') {
-        setAuthenticating(false);
+        setAuthenticating(undefined);
         return;
       }
-      setAuthenticating(true);
+      setAuthenticating('Authenticating');
       if (response.type === 'success') {
         exchangeFn({
           clientId: ClientId,
@@ -65,7 +65,7 @@ export const AppContext: React.FC<ReactChildren> = ({ children }) => {
   const logout: IGenericReturn<Promise<void>> = async () => {
     if (authTokens) {
       setDrawerOpen(false);
-      setAuthenticating(true);
+      setAuthenticating('Logout');
       const revokeResponse = await revokeAsync(
         {
           clientId: ClientId,
@@ -77,7 +77,7 @@ export const AppContext: React.FC<ReactChildren> = ({ children }) => {
       if (revokeResponse) {
         setAuthTokens(undefined);
       }
-      setAuthenticating(false);
+      setAuthenticating(undefined);
       setCurrentPage('Login');
     }
   };

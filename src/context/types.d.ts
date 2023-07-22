@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Pages, IGenericMethod, PromptAsyncType } from '@types';
+import { Pages, IGenericMethod, PromptAsyncType, AuthType } from '@types';
 import { DiscoveryDocument, TokenResponse } from 'expo-auth-session';
 
 export interface IUseDrawerHelperReturn {
@@ -21,7 +21,7 @@ export interface IUseAppContextReturn {
 }
 
 export interface IUseAuthReturn {
-  authenticating: boolean;
+  authenticating: AuthType;
   authTokens: TokenResponse | undefined;
   promptAsync: PromptAsyncType;
   logout: IGenericReturn<Promise<void>>;

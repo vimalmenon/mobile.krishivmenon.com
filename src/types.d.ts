@@ -11,6 +11,8 @@ export type IGeneric<T, K> = (v: T) => K;
 // eslint-disable-next-line  @typescript-eslint/no-explicit-any
 export type AnyType = any;
 
+export type AuthType = 'Authenticating' | 'Logout' | undefined;
+
 export type Pages = 'Home' | 'Gallery' | 'Notes' | 'Login' | 'NoteDetail';
 
 export type PromptAsyncType = (options?: AuthRequestPromptOptions) => Promise<AuthSessionResult>;
@@ -28,7 +30,7 @@ export interface ReactChildren {
 }
 
 export interface IAppContext {
-  authenticating: boolean;
+  authenticating: AuthType;
   currentPage: Pages;
   setCurrentPage: Dispatch<SetStateAction<Pages>>;
   drawerOpen: boolean;
