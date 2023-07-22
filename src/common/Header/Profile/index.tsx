@@ -1,13 +1,16 @@
 import { useProfile } from '@context';
 import { Image, View } from 'react-native';
-import { Text, IconButton } from 'react-native-paper';
+import { IconButton } from 'react-native-paper';
 
 export const Profile: React.FC = () => {
   const { profile } = useProfile();
   if (profile) {
     return (
-      <View>
+      <View className="w-12 h-12">
         <Image
+          width={45}
+          height={45}
+          className="rounded-full"
           source={{
             uri: profile.avatar,
           }}
