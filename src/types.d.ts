@@ -81,3 +81,11 @@ export interface INotes extends IBaseDB {
   content: string;
   metadata: Record<string, string>;
 }
+
+export interface IProfile extends IBaseDB {
+  name: string;
+  role: string;
+  email: string;
+  avatar: string;
+  provider: string;
+}

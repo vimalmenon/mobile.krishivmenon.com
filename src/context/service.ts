@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { AuthUrl } from '@data';
+import { AuthUrl, apis } from '@data';
+import { useQuery } from '@hooks';
 import { useNavigation } from '@react-navigation/native';
 import { IAppContext, NavigationProps, Pages, IGenericMethod, IGenericReturn } from '@types';
 import { createURL } from 'expo-linking';
@@ -97,4 +98,11 @@ export const useAuthHelper: IGenericReturn<IUseAuthHelperReturn> = () => {
     redirectUri,
     discoveryDocument,
   };
+};
+
+export const useProfile = () => {
+  const { makeApiCall } = useQuery();
+  React.useEffect(() => {
+    makeApiCall(apis.getProfile());
+  }, []);
 };

@@ -33,4 +33,12 @@ export const apis = {
       method: 'GET',
     };
   },
+  getProfile: function (): IApi {
+    const url = Apis.Me;
+    return {
+      baseURL: getBaseUrl(),
+      url,
+      method: 'GET',
+    };
+  },
 };

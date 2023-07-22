@@ -4,6 +4,8 @@ import { useNavigation } from '@react-navigation/native';
 import { StackActions } from '@react-navigation/native';
 import { Appbar } from 'react-native-paper';
 
+import { Profile } from './Profile';
+
 export const Header: React.FC = () => {
   const { currentPage } = useAppContext();
   const { onToggle } = useDrawerHelper();
@@ -17,6 +19,7 @@ export const Header: React.FC = () => {
           <Appbar.BackAction onPress={() => dispatch(StackActions.pop(1))} />
         )}
         <Appbar.Content title={selectedPage.title} />
+        <Profile />
       </Appbar.Header>
     );
   }

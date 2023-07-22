@@ -3,7 +3,7 @@ import { useAuth } from '@context';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from '@types';
 
-import { PagesAuthorized, PagesUnauthorized } from '.';
+import { PagesAuthorized, PagesUnauthorized } from './data';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

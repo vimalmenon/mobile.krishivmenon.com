@@ -7,7 +7,7 @@
 [Feature] View Gallery
 [Enhancement] Show Screen Properly
 [Feature] Show profile
-[Bug] Fix the cycling issue
+[Bug] Fix the cycling warning
 
 https://callstack.github.io/react-native-paper/docs/guides/getting-started/
 https://reactnavigation.org/docs/status-bar
