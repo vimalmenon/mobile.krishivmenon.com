@@ -1,10 +1,12 @@
 import React from 'react';
 
 import { useAuth } from '@context';
-import { IApi, IBaseResponse } from '@types';
+import { IApi, IBaseResponse, IGenericReturn } from '@types';
 import axios from 'axios';
 
-export const useQuery = () => {
+import { IUseQuery } from './type';
+
+export const useQuery: IGenericReturn<IUseQuery> = () => {
   const { authTokens } = useAuth();
   const instance = React.useMemo(
     () =>

@@ -2,15 +2,7 @@ import React from 'react';
 
 import { AuthUrl, apis } from '@data';
 import { useQuery } from '@hooks';
-import { useNavigation } from '@react-navigation/native';
-import {
-  IAppContext,
-  NavigationProps,
-  Pages,
-  IGenericMethod,
-  IGenericReturn,
-  IProfile,
-} from '@types';
+import { IAppContext, IGenericMethod, IGenericReturn, IProfile } from '@types';
 import { createURL } from 'expo-linking';
 
 import {
@@ -62,20 +54,9 @@ export const useDrawerHelper: IGenericReturn<IUseDrawerHelperReturn> = () => {
 };
 
 export const useNavigationHelper: IGenericReturn<IUseNavigationHelperReturn> = () => {
-  const navigation = useNavigation<NavigationProps>();
-  const { currentPage, setCurrentPage, setDrawerOpen } = React.useContext<IAppContext>(AppContext);
-  const onNavigate = <T = unknown>(name: Pages, params?: T): void => {
-    navigation.navigate<any>(name, params);
-    setDrawerOpen(false);
-  };
-  const onReplace = <T = unknown>(name: Pages, params?: T): void => {
-    navigation.replace<any>(name, params);
-    setDrawerOpen(false);
-  };
+  const { currentPage, setCurrentPage } = React.useContext<IAppContext>(AppContext);
   return {
     currentPage,
-    onNavigate,
-    onReplace,
     setCurrentPage,
   };
 };
@@ -113,7 +94,7 @@ export const useProfile = () => {
   React.useEffect(() => {
     getProfile();
   }, []);
-  const getProfile = async () => {
+  const getProfile: IGenericReturn<Promise<void>> = async () => {
     const profile = await makeApiCall<IProfile>(apis.getProfile());
     setProfile(profile);
   };
