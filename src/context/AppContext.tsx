@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { ClientId, ClientSecret } from '@data';
-import { ReactChildren, Pages, IGenericReturn, AuthType } from '@types';
+import { LoginPage, HomePage } from '@pages/data';
+import { ReactChildren, IGenericReturn, AuthType, IPage } from '@types';
 import {
   useAuthRequest,
   exchangeCodeAsync,
@@ -14,7 +15,7 @@ import {
 import { AppContext as AppContextService, useAuthHelper } from './service';
 
 export const AppContext: React.FC<ReactChildren> = ({ children }) => {
-  const [currentPage, setCurrentPage] = React.useState<Pages>('Login');
+  const [currentPage, setCurrentPage] = React.useState<IPage>(LoginPage);
   const [drawerOpen, setDrawerOpen] = React.useState<boolean>(false);
   const [authTokens, setAuthTokens] = React.useState<TokenResponse | undefined>();
   const [authenticating, setAuthenticating] = React.useState<AuthType>();
@@ -36,7 +37,7 @@ export const AppContext: React.FC<ReactChildren> = ({ children }) => {
       try {
         const exchangeTokenResponse = await exchangeCodeAsync(exchangeTokenReq, discoveryDocument);
         setAuthTokens(exchangeTokenResponse);
-        setCurrentPage('Home');
+        setCurrentPage(HomePage);
       } catch (error) {
         console.error(error);
       } finally {
@@ -78,7 +79,7 @@ export const AppContext: React.FC<ReactChildren> = ({ children }) => {
         setAuthTokens(undefined);
       }
       setAuthenticating(undefined);
-      setCurrentPage('Login');
+      setCurrentPage(LoginPage);
     }
   };
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useNavigationHelper, useAuth } from '@context';
-import { PagesAuthorized, PagesUnauthorized } from '@pages';
+import { PagesAuthorized, PagesUnauthorized } from '@pages/data';
 import { useNavigation, StackActions } from '@react-navigation/native';
 import { View, SafeAreaView } from 'react-native';
 import { Drawer } from 'react-native-paper';
@@ -22,7 +22,7 @@ export const DrawerNavigation: React.FC = () => {
                 icon={page.icon}
                 label={page.name}
                 onPress={() => dispatch(StackActions.replace(page.name))}
-                active={currentPage === page.name}
+                active={currentPage.name === page.name}
               />
             );
           }

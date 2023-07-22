@@ -1,13 +1,14 @@
 [Feature] Learn react native
-[Enhancement] Deploy the app
-[Feature] Remove any type from component
 [Feature] Setting up CI with github action
 [Feature] Setting up CD with github action
-[Feature] View Add and Delete Notes
+[Feature] View Notes
+[Feature] View Note
+[Feature] Edit Note
+[Feature] Add Note
+[Feature] Delete note
 [Feature] View Gallery
 [Enhancement] Show Screen Properly
 [Bug] Fix the cycling warning
-[Feature] Fix the Pages in context
 
 https://callstack.github.io/react-native-paper/docs/guides/getting-started/
 https://reactnavigation.org/docs/status-bar

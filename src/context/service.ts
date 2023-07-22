@@ -2,6 +2,7 @@ import React from 'react';
 
 import { AuthUrl, apis } from '@data';
 import { useQuery } from '@hooks';
+import { LoginPage } from '@pages/data';
 import { IAppContext, IGenericMethod, IGenericReturn, IProfile } from '@types';
 import { createURL } from 'expo-linking';
 
@@ -16,7 +17,7 @@ import { NotImplemented } from '../utility';
 
 export const AppContext = React.createContext<IAppContext>({
   authenticating: undefined,
-  currentPage: 'Home',
+  currentPage: LoginPage,
   setCurrentPage: NotImplemented,
   drawerOpen: false,
   setDrawerOpen: NotImplemented,

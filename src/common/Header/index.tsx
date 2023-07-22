@@ -1,5 +1,4 @@
-import { useAppContext, useDrawerHelper } from '@context';
-import { PageMap } from '@pages';
+import { useNavigationHelper, useDrawerHelper } from '@context';
 import { useNavigation } from '@react-navigation/native';
 import { StackActions } from '@react-navigation/native';
 import { Appbar } from 'react-native-paper';
@@ -7,18 +6,17 @@ import { Appbar } from 'react-native-paper';
 import { Profile } from './Profile';
 
 export const Header: React.FC = () => {
-  const { currentPage } = useAppContext();
+  const { currentPage } = useNavigationHelper();
   const { onToggle } = useDrawerHelper();
   const { dispatch } = useNavigation();
-  const selectedPage = PageMap[currentPage];
-  if (selectedPage.showHeader) {
+  if (currentPage.showHeader) {
     return (
       <Appbar.Header>
-        {selectedPage.headerLeftIcon === 'Menu' && <Appbar.Action icon="menu" onPress={onToggle} />}
-        {selectedPage.headerLeftIcon === 'Back' && (
+        {currentPage.headerLeftIcon === 'Menu' && <Appbar.Action icon="menu" onPress={onToggle} />}
+        {currentPage.headerLeftIcon === 'Back' && (
           <Appbar.BackAction onPress={() => dispatch(StackActions.pop(1))} />
         )}
-        <Appbar.Content title={selectedPage.title} />
+        <Appbar.Content title={currentPage.title} />
         <Profile />
       </Appbar.Header>
     );

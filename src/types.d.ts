@@ -29,18 +29,6 @@ export interface ReactChildren {
   children: ReactNode;
 }
 
-export interface IAppContext {
-  authenticating: AuthType;
-  currentPage: Pages;
-  setCurrentPage: Dispatch<SetStateAction<Pages>>;
-  drawerOpen: boolean;
-  setDrawerOpen: Dispatch<SetStateAction<boolean>>;
-  authTokens: TokenResponse | undefined;
-  setAuthTokens: Dispatch<SetStateAction<TokenResponse | undefined>>;
-  promptAsync: PromptAsyncType;
-  logout: IGenericReturn<Promise<void>>;
-}
-
 export interface IPage {
   name: Pages;
   component: AnyType;
@@ -50,6 +38,18 @@ export interface IPage {
   showDrawer: boolean;
   showInDrawer: boolean;
   headerLeftIcon: 'Menu' | 'Back' | undefined;
+}
+
+export interface IAppContext {
+  authenticating: AuthType;
+  currentPage: IPage;
+  setCurrentPage: Dispatch<SetStateAction<IPage>>;
+  drawerOpen: boolean;
+  setDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  authTokens: TokenResponse | undefined;
+  setAuthTokens: Dispatch<SetStateAction<TokenResponse | undefined>>;
+  promptAsync: PromptAsyncType;
+  logout: IGenericReturn<Promise<void>>;
 }
 
 export type NavigationProps = NativeStackNavigationProp<RootStackParamList>;

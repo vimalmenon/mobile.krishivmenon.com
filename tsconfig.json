@@ -5,7 +5,7 @@
     "paths": {
       "@types": ["src/types"],
       "@common": ["src/common"],
-      "@pages": ["src/pages"],
+      "@pages/*": ["src/pages/*"],
       "@context": ["src/context"],
       "@data": ["src/data"],
       "@hooks": ["src/hooks"]
