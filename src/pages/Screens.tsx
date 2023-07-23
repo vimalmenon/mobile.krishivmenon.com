@@ -3,13 +3,12 @@ import { useAuth } from '@context';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from '@types';
 
-import { PagesAuthorized, PagesUnauthorized } from './data';
+import { Pages } from './data';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export const Screens: React.FC = () => {
   const { authTokens, authenticating } = useAuth();
-  const selectedScreen = authTokens ? PagesAuthorized : PagesUnauthorized;
   if (authenticating) {
     return (
       <Loading text={authenticating === 'Authenticating' ? 'Authenticating' : 'Logging out'} />
@@ -22,7 +21,7 @@ export const Screens: React.FC = () => {
       }}
       initialRouteName={authTokens ? 'Home' : 'Login'}
     >
-      {selectedScreen.map((page) => {
+      {Pages.map((page) => {
         return <Stack.Screen key={page.name} name={page.name} component={page.component} />;
       })}
     </Stack.Navigator>

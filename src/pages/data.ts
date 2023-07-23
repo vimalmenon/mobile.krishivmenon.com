@@ -1,4 +1,4 @@
-import { IPage, Pages } from '@types';
+import { IPage, Pages as PageType } from '@types';
 
 import { Gallery } from './Gallery';
 import { Home } from './Home';
@@ -60,11 +60,10 @@ export const NoteDetailPage: IPage = {
   showInDrawer: false,
   headerLeftIcon: 'Back',
 };
-export const PagesAuthorized = [HomePage, GalleryPage, NotesPage, NoteDetailPage];
 
-export const PagesUnauthorized = [LoginPage];
+export const Pages = [LoginPage, HomePage, GalleryPage, NotesPage, NoteDetailPage];
 
-export const PageMap: Record<Pages, IPage> = {
+export const PageMap: Record<PageType, IPage> = {
   Login: LoginPage,
   Home: HomePage,
   Gallery: GalleryPage,
