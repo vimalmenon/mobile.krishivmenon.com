@@ -1,13 +1,12 @@
 import React from 'react';
 
 import { useNavigationHelper, useAuth } from '@context';
-import { Pages } from '@pages/data';
 import { useNavigation, StackActions } from '@react-navigation/native';
 import { View, SafeAreaView } from 'react-native';
 import { Drawer } from 'react-native-paper';
 
 export const DrawerNavigation: React.FC = () => {
-  const { currentPage } = useNavigationHelper();
+  const { currentPage, Pages } = useNavigationHelper();
   const { logout } = useAuth();
   const { dispatch } = useNavigation();
   return (

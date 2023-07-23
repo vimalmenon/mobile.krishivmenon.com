@@ -2,7 +2,7 @@ import React from 'react';
 
 import { AuthUrl, apis } from '@data';
 import { useQuery } from '@hooks';
-import { LoginPage } from '@pages/data';
+import { LoginPage, Pages, PageMap } from '@pages/data';
 import { IAppContext, IGenericMethod, IGenericReturn, IProfile } from '@types';
 import { createURL } from 'expo-linking';
 
@@ -48,6 +48,8 @@ export const useDrawerHelper: IGenericReturn<IUseDrawerHelperReturn> = () => {
 export const useNavigationHelper: IGenericReturn<IUseNavigationHelperReturn> = () => {
   const { currentPage, setCurrentPage } = React.useContext<IAppContext>(AppContext);
   return {
+    Pages,
+    PageMap,
     currentPage,
     setCurrentPage,
   };

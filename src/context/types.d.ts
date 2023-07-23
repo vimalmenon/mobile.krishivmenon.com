@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IGenericMethod, PromptAsyncType, AuthType, IPage } from '@types';
+import { IGenericMethod, PromptAsyncType, AuthType, IPage, Pages } from '@types';
 import { DiscoveryDocument, TokenResponse } from 'expo-auth-session';
 
 export interface IUseDrawerHelperReturn {
@@ -11,6 +11,8 @@ export interface IUseDrawerHelperReturn {
 }
 
 export interface IUseNavigationHelperReturn {
+  Pages: IPage[];
+  PageMap: Record<Pages, IPage>;
   currentPage: IPage;
   setCurrentPage: React.Dispatch<React.SetStateAction<IPage>>;
 }
