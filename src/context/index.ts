@@ -1,2 +1,9 @@
 export { AppContext } from './AppContext';
-export { useDrawerHelper, useNavigationHelper, useAuth, useProfile, useApiHelper } from './service';
+export {
+  useDrawerHelper,
+  useNavigationHelper,
+  useAuth,
+  useProfile,
+  useApiHelper,
+  useNotes,
+} from './service';

@@ -2,7 +2,15 @@ import React from 'react';
 
 import { AuthUrl } from '@data';
 import { LoginPage, Pages, PageMap } from '@pages/data';
-import { IApi, IAppContext, IBaseResponse, IGenericMethod, IGenericReturn, IProfile } from '@types';
+import {
+  IApi,
+  IAppContext,
+  IBaseResponse,
+  IGenericMethod,
+  IGenericReturn,
+  INotes,
+  IProfile,
+} from '@types';
 import axios from 'axios';
 import { createURL } from 'expo-linking';
 
@@ -26,6 +34,10 @@ export const AppContext = React.createContext<IAppContext>({
   setAuthTokens: NotImplemented,
   promptAsync: NotImplemented,
   logout: NotImplemented,
+  loadingNotes: false,
+  setLoadingNotes: NotImplemented,
+  notes: [],
+  setNotes: NotImplemented,
 });
 
 export const useDrawerHelper: IGenericReturn<IUseDrawerHelperReturn> = () => {
@@ -125,5 +137,33 @@ export const useApiHelper: IGenericReturn<IUseApiHelper> = () => {
   return {
     apis,
     makeApiCall,
+  };
+};
+
+export const useNotes = () => {
+  const { loadingNotes, notes, setNotes, setLoadingNotes } =
+    React.useContext<IAppContext>(AppContext);
+  const { makeApiCall, apis } = useApiHelper();
+  // const addNote = () => {};
+  // const deleteNote = () => {};
+  const getNotes: IGenericReturn<Promise<void>> = async () => {
+    setLoadingNotes(true);
+    makeApiCall<INotes[]>(apis.getNotes())
+      .then((data) => {
+        setNotes(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+      .finally(() => {
+        setLoadingNotes(false);
+      });
+  };
+  return {
+    notes,
+    getNotes,
+    // addNote,
+    // deleteNote,
+    loadingNotes,
   };
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { LoginPage, HomePage } from '@pages/data';
-import { ReactChildren, IGenericReturn, AuthType, IPage } from '@types';
+import { ReactChildren, IGenericReturn, AuthType, IPage, INotes } from '@types';
 import {
   useAuthRequest,
   exchangeCodeAsync,
@@ -17,6 +17,11 @@ import { AppContext as AppContextService, useAuthHelper } from './service';
 export const AppContext: React.FC<ReactChildren> = ({ children }) => {
   const [currentPage, setCurrentPage] = React.useState<IPage>(LoginPage);
   const [drawerOpen, setDrawerOpen] = React.useState<boolean>(false);
+
+  // Notes
+  const [loadingNotes, setLoadingNotes] = React.useState<boolean>(true);
+  const [notes, setNotes] = React.useState<INotes[]>([]);
+
   const [authTokens, setAuthTokens] = React.useState<TokenResponse | undefined>();
   const [authenticating, setAuthenticating] = React.useState<AuthType>();
   const { redirectUri, discoveryDocument } = useAuthHelper();
@@ -85,6 +90,8 @@ export const AppContext: React.FC<ReactChildren> = ({ children }) => {
   return (
     <AppContextService.Provider
       value={{
+        notes,
+        setNotes,
         authenticating,
         currentPage,
         setCurrentPage,
@@ -94,6 +101,8 @@ export const AppContext: React.FC<ReactChildren> = ({ children }) => {
         setAuthTokens,
         promptAsync,
         logout,
+        loadingNotes,
+        setLoadingNotes,
       }}
     >
       {children}

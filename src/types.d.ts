@@ -51,6 +51,10 @@ export interface IAppContext {
   setAuthTokens: Dispatch<SetStateAction<TokenResponse | undefined>>;
   promptAsync: PromptAsyncType;
   logout: IGenericReturn<Promise<void>>;
+  loadingNotes: boolean;
+  setLoadingNotes: Dispatch<SetStateAction<boolean>>;
+  notes: INotes[];
+  setNotes: Dispatch<SetStateAction<INotes[]>>;
 }
 
 export type NavigationProps = NativeStackNavigationProp<RootStackParamList>;

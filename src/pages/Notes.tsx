@@ -1,10 +1,10 @@
 import React from 'react';
 
 import { Loading } from '@common';
-import { useApiHelper } from '@context';
+import { useNotes } from '@context';
 import { StackActions, useNavigation } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { INotes, RootStackParamList } from '@types';
+import { RootStackParamList } from '@types';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { IconButton } from 'react-native-paper';
 
@@ -13,27 +13,15 @@ import { Layout } from './Layout';
 type NotesProps = NativeStackScreenProps<RootStackParamList, 'Notes'>;
 
 export const Notes: React.FC<NotesProps> = ({ route }) => {
-  const [notes, setNotes] = React.useState<INotes[]>([]);
-  const [loading, setLoading] = React.useState<boolean>(true);
-  const { makeApiCall, apis } = useApiHelper();
+  const { getNotes, notes, loadingNotes } = useNotes();
   const { dispatch } = useNavigation();
   React.useEffect(() => {
-    setLoading(true);
-    makeApiCall<INotes[]>(apis.getNotes())
-      .then((data) => {
-        setNotes(data);
-      })
-      .catch((error) => {
-        console.error(error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    getNotes();
   }, []);
   return (
     <Layout page={route.name}>
       <View className="flex-1">
-        {loading ? (
+        {loadingNotes ? (
           <View className="flex-1">
             <Loading text="Loading Notes" />
           </View>
