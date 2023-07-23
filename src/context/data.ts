@@ -1,4 +1,4 @@
-import { IApi, IGenericReturn } from '@types';
+import { IApi, IGenericReturn, INotes } from '@types';
 
 export const ClientId = process.env.EXPO_PUBLIC_AWS_COGNITO_CLIENT_ID || '';
 export const ClientSecret = process.env.EXPO_PUBLIC_AWS_COGNITO_CLIENT_SECRET || '';
@@ -39,6 +39,15 @@ export const apis: IApis = {
       baseURL: getBaseUrl(),
       url,
       method: 'GET',
+    };
+  },
+  addNote: function (data: INotes): IApi<INotes> {
+    const url = Apis.Notes;
+    return {
+      baseURL: getBaseUrl(),
+      url,
+      method: 'POST',
+      data,
     };
   },
 };

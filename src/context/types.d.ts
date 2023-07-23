@@ -8,6 +8,8 @@ import {
   Pages,
   IGenericReturn,
   IApi,
+  IGeneric,
+  INotes,
 } from '@types';
 import { DiscoveryDocument, TokenResponse } from 'expo-auth-session';
 
@@ -39,6 +41,7 @@ export interface IUseAuthHelperReturn {
 export interface IApis {
   getNotes: IGenericReturn<IApi>;
   getProfile: IGenericReturn<IApi>;
+  addNote: IGeneric<INotes, IApi<INotes>>;
 }
 
 export interface IUseApiHelper {
