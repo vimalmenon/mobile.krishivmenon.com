@@ -55,6 +55,8 @@ export interface IAppContext {
   setLoadingNotes: Dispatch<SetStateAction<boolean>>;
   notes: INotes[];
   setNotes: Dispatch<SetStateAction<INotes[]>>;
+  profile: IProfile | undefined;
+  setProfile: Dispatch<SetStateAction<IProfile | undefined>>;
 }
 
 export type NavigationProps = NativeStackNavigationProp<RootStackParamList>;

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { LoginPage, HomePage } from '@pages/data';
-import { ReactChildren, IGenericReturn, AuthType, IPage, INotes } from '@types';
+import { ReactChildren, IGenericReturn, AuthType, IPage, INotes, IProfile } from '@types';
 import {
   useAuthRequest,
   exchangeCodeAsync,
@@ -21,6 +21,9 @@ export const AppContext: React.FC<ReactChildren> = ({ children }) => {
   // Notes
   const [loadingNotes, setLoadingNotes] = React.useState<boolean>(true);
   const [notes, setNotes] = React.useState<INotes[]>([]);
+
+  // Profile
+  const [profile, setProfile] = React.useState<IProfile>();
 
   const [authTokens, setAuthTokens] = React.useState<TokenResponse | undefined>();
   const [authenticating, setAuthenticating] = React.useState<AuthType>();
@@ -103,6 +106,8 @@ export const AppContext: React.FC<ReactChildren> = ({ children }) => {
         logout,
         loadingNotes,
         setLoadingNotes,
+        profile,
+        setProfile,
       }}
     >
       {children}

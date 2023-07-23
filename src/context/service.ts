@@ -38,6 +38,8 @@ export const AppContext = React.createContext<IAppContext>({
   setLoadingNotes: NotImplemented,
   notes: [],
   setNotes: NotImplemented,
+  profile: undefined,
+  setProfile: NotImplemented,
 });
 
 export const useDrawerHelper: IGenericReturn<IUseDrawerHelperReturn> = () => {
@@ -97,10 +99,12 @@ export const useAuthHelper: IGenericReturn<IUseAuthHelperReturn> = () => {
 };
 
 export const useProfile = () => {
+  const { profile, setProfile } = React.useContext<IAppContext>(AppContext);
   const { makeApiCall, apis } = useApiHelper();
-  const [profile, setProfile] = React.useState<IProfile>();
   React.useEffect(() => {
-    getProfile();
+    if (!profile) {
+      getProfile();
+    }
   }, []);
   const getProfile: IGenericReturn<Promise<void>> = async () => {
     const profile = await makeApiCall<IProfile>(apis.getProfile());
