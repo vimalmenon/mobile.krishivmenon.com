@@ -42,6 +42,8 @@ export interface IApis {
   getNotes: IGenericReturn<IApi>;
   getProfile: IGenericReturn<IApi>;
   addNote: IGeneric<INotes, IApi<INotes>>;
+  updateNote: IGeneric<INotes, IApi<INotes>>;
+  deleteNote: IGeneric<string, IApi>;
 }
 
 export interface IUseApiHelper {

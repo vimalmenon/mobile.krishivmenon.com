@@ -50,4 +50,24 @@ export const apis: IApis = {
       data,
     };
   },
+  updateNote: function (data: INotes): IApi<INotes> {
+    const url = Apis.Note.replace('{id}', data.id || '');
+    return {
+      baseURL: getBaseUrl(),
+      url,
+      method: 'PUT',
+      data,
+    };
+  },
+  deleteNote: function (id: string): IApi {
+    const url = Apis.Note.replace('{id}', id);
+    return {
+      baseURL: getBaseUrl(),
+      url,
+      method: 'DELETE',
+      params: {
+        code: '3',
+      },
+    };
+  },
 };
