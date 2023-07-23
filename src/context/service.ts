@@ -158,16 +158,9 @@ export const useNotes = () => {
   };
   const getNotes: IGenericReturn<Promise<void>> = async () => {
     setLoadingNotes(true);
-    makeApiCall<INotes[]>(apis.getNotes())
-      .then((data) => {
-        setNotes(data);
-      })
-      .catch((error) => {
-        console.error(error);
-      })
-      .finally(() => {
-        setLoadingNotes(false);
-      });
+    const data = await makeApiCall<INotes[]>(apis.getNotes());
+    setNotes(data);
+    setLoadingNotes(false);
   };
   return {
     notes,
