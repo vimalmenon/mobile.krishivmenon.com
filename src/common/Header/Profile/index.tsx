@@ -8,8 +8,8 @@ export const Profile: React.FC = () => {
     return (
       <View className="w-12 h-12">
         <Image
-          width={40}
-          height={40}
+          width={35}
+          height={35}
           className="rounded-full"
           source={{
             uri: profile.avatar,

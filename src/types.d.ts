@@ -15,6 +15,8 @@ export type AuthType = 'Authenticating' | 'Logout' | undefined;
 
 export type Pages = 'Home' | 'Gallery' | 'Notes' | 'Login' | 'NoteDetail';
 
+export type PageType = 'Common' | 'Note' | undefined;
+
 export type PromptAsyncType = (options?: AuthRequestPromptOptions) => Promise<AuthSessionResult>;
 
 export type RootStackParamList = {
@@ -34,10 +36,9 @@ export interface IPage {
   component: AnyType;
   icon: string;
   title: string;
-  showHeader: boolean;
-  showDrawer: boolean;
   showInDrawer: boolean;
-  headerLeftIcon: 'Menu' | 'Back' | undefined;
+  showDrawer: boolean;
+  pageType: PageType;
 }
 
 export interface IAppContext {

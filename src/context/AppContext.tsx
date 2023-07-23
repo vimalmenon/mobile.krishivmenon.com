@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { ClientId, ClientSecret } from './data';
 import { LoginPage, HomePage } from '@pages/data';
 import { ReactChildren, IGenericReturn, AuthType, IPage } from '@types';
 import {
@@ -12,6 +11,7 @@ import {
   TokenResponse,
 } from 'expo-auth-session';
 
+import { ClientId, ClientSecret } from './data';
 import { AppContext as AppContextService, useAuthHelper } from './service';
 
 export const AppContext: React.FC<ReactChildren> = ({ children }) => {

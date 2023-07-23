@@ -11,10 +11,9 @@ export const LoginPage: IPage = {
   component: Login,
   icon: 'login',
   title: 'Login',
-  showHeader: false,
-  showDrawer: false,
+  pageType: undefined,
   showInDrawer: false,
-  headerLeftIcon: undefined,
+  showDrawer: false,
 };
 
 export const HomePage: IPage = {
@@ -22,10 +21,9 @@ export const HomePage: IPage = {
   component: Home,
   icon: 'home',
   title: 'Home',
-  showHeader: true,
-  showDrawer: true,
+  pageType: 'Common',
   showInDrawer: true,
-  headerLeftIcon: 'Menu',
+  showDrawer: true,
 };
 
 export const GalleryPage: IPage = {
@@ -33,10 +31,9 @@ export const GalleryPage: IPage = {
   component: Gallery,
   icon: 'view-gallery',
   title: 'Gallery',
-  showHeader: true,
-  showDrawer: true,
+  pageType: 'Common',
   showInDrawer: true,
-  headerLeftIcon: 'Menu',
+  showDrawer: true,
 };
 
 export const NotesPage: IPage = {
@@ -44,10 +41,9 @@ export const NotesPage: IPage = {
   component: Notes,
   icon: 'note',
   title: 'Notes',
-  showHeader: true,
-  showDrawer: true,
+  pageType: 'Common',
   showInDrawer: true,
-  headerLeftIcon: 'Menu',
+  showDrawer: true,
 };
 
 export const NoteDetailPage: IPage = {
@@ -55,10 +51,9 @@ export const NoteDetailPage: IPage = {
   component: NoteDetail,
   icon: 'note',
   title: 'Note',
-  showHeader: true,
-  showDrawer: false,
+  pageType: 'Note',
   showInDrawer: false,
-  headerLeftIcon: 'Back',
+  showDrawer: false,
 };
 
 export const Pages = [LoginPage, HomePage, GalleryPage, NotesPage, NoteDetailPage];
