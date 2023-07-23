@@ -1,16 +1,18 @@
 import React from 'react';
 
-import { AuthUrl, apis } from '@data';
-import { useQuery } from '@hooks';
+import { AuthUrl } from '@data';
 import { LoginPage, Pages, PageMap } from '@pages/data';
-import { IAppContext, IGenericMethod, IGenericReturn, IProfile } from '@types';
+import { IApi, IAppContext, IBaseResponse, IGenericMethod, IGenericReturn, IProfile } from '@types';
+import axios from 'axios';
 import { createURL } from 'expo-linking';
 
+import { apis } from './data';
 import {
   IUseDrawerHelperReturn,
   IUseNavigationHelperReturn,
   IUseAuthReturn,
   IUseAuthHelperReturn,
+  IUseApiHelper,
 } from './types';
 import { NotImplemented } from '../utility';
 
@@ -83,7 +85,7 @@ export const useAuthHelper: IGenericReturn<IUseAuthHelperReturn> = () => {
 };
 
 export const useProfile = () => {
-  const { makeApiCall } = useQuery();
+  const { makeApiCall, apis } = useApiHelper();
   const [profile, setProfile] = React.useState<IProfile>();
   React.useEffect(() => {
     getProfile();
@@ -94,5 +96,34 @@ export const useProfile = () => {
   };
   return {
     profile,
+  };
+};
+
+export const useApiHelper: IGenericReturn<IUseApiHelper> = () => {
+  const { authTokens } = useAuth();
+  const instance = React.useMemo(
+    () =>
+      axios.create({
+        headers: {
+          Authorization: authTokens?.idToken || '',
+        },
+      }),
+    [authTokens?.idToken]
+  );
+  function makeApiCall<K = unknown, T = unknown>(value: IApi<T>): Promise<K> {
+    return instance
+      .request<IBaseResponse<K>>(value)
+      .then((result) => result.data)
+      .then((result) => {
+        return result.data;
+      })
+      .catch((result) => {
+        throw new Error(result.message);
+      });
+  }
+
+  return {
+    apis,
+    makeApiCall,
   };
 };

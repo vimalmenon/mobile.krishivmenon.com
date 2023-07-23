@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ClientId, ClientSecret } from '@data';
+import { ClientId, ClientSecret } from './data';
 import { LoginPage, HomePage } from '@pages/data';
 import { ReactChildren, IGenericReturn, AuthType, IPage } from '@types';
 import {

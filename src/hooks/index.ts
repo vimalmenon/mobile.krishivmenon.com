@@ -1,1 +1,1 @@
-export * from './useQuery';
+export const test = 'test';

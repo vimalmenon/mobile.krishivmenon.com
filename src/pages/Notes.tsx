@@ -1,8 +1,7 @@
 import React from 'react';
 
 import { Loading } from '@common';
-import { apis } from '@data';
-import { useQuery } from '@hooks';
+import { useApiHelper } from '@context';
 import { StackActions, useNavigation } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { INotes, RootStackParamList } from '@types';
@@ -16,7 +15,7 @@ type NotesProps = NativeStackScreenProps<RootStackParamList, 'Notes'>;
 export const Notes: React.FC<NotesProps> = ({ route }) => {
   const [notes, setNotes] = React.useState<INotes[]>([]);
   const [loading, setLoading] = React.useState<boolean>(true);
-  const { makeApiCall } = useQuery();
+  const { makeApiCall, apis } = useApiHelper();
   const { dispatch } = useNavigation();
   React.useEffect(() => {
     setLoading(true);

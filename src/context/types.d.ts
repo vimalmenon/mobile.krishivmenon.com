@@ -1,6 +1,14 @@
 import React from 'react';
 
-import { IGenericMethod, PromptAsyncType, AuthType, IPage, Pages } from '@types';
+import {
+  IGenericMethod,
+  PromptAsyncType,
+  AuthType,
+  IPage,
+  Pages,
+  IGenericReturn,
+  IApi,
+} from '@types';
 import { DiscoveryDocument, TokenResponse } from 'expo-auth-session';
 
 export interface IUseDrawerHelperReturn {
@@ -26,4 +34,14 @@ export interface IUseAuthReturn {
 export interface IUseAuthHelperReturn {
   redirectUri: string;
   discoveryDocument: DiscoveryDocument;
+}
+
+export interface IApis {
+  getNotes: IGenericReturn<IApi>;
+  getProfile: IGenericReturn<IApi>;
+}
+
+export interface IUseApiHelper {
+  makeApiCall: <K = unknown, T = unknown>(value: IApi<T>) => Promise<K>;
+  apis: IApis;
 }
