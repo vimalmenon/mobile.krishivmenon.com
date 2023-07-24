@@ -13,7 +13,7 @@ import { Layout } from './Layout';
 type NotesProps = NativeStackScreenProps<RootStackParamList, 'Notes'>;
 
 export const Notes: React.FC<NotesProps> = ({ route }) => {
-  const { getNotes, notes, loadingNotes } = useNotes();
+  const { getNotes, notes, loadingNotes, newNote } = useNotes();
   const { dispatch } = useNavigation();
   React.useEffect(() => {
     getNotes();
@@ -30,7 +30,10 @@ export const Notes: React.FC<NotesProps> = ({ route }) => {
             <View className="flex flex-row justify-between items-center m-2">
               <Text className="text-xl font-bold text-gray-600">Notes</Text>
               <View>
-                <IconButton icon="plus" />
+                <IconButton
+                  icon="plus"
+                  onPress={() => dispatch(StackActions.push('NoteDetail', newNote))}
+                />
               </View>
             </View>
             <View>
