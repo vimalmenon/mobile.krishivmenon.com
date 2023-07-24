@@ -27,18 +27,26 @@ export const Notes: React.FC<NotesProps> = ({ route }) => {
           </View>
         ) : (
           <View>
-            {notes.map((note) => {
-              return (
-                <TouchableOpacity
-                  key={note.id}
-                  className="flex flex-row items-center justify-between mx-2"
-                  onPress={() => dispatch(StackActions.push('NoteDetail', note))}
-                >
-                  <Text className="text-2xl">{note.title}</Text>
-                  <IconButton icon="close" />
-                </TouchableOpacity>
-              );
-            })}
+            <View className="flex flex-row">
+              <Text>Notes</Text>
+              <View>
+                <IconButton icon="plus" />
+              </View>
+            </View>
+            <View>
+              {notes.map((note) => {
+                return (
+                  <TouchableOpacity
+                    key={note.id}
+                    className="flex flex-row items-center justify-between mx-2"
+                    onPress={() => dispatch(StackActions.push('NoteDetail', note))}
+                  >
+                    <Text className="text-2xl">{note.title}</Text>
+                    <IconButton icon="close" />
+                  </TouchableOpacity>
+                );
+              })}
+            </View>
           </View>
         )}
       </View>

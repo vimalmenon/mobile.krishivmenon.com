@@ -34,8 +34,6 @@ const NoteHeader: React.FC = () => {
     <Appbar.Header>
       <Appbar.BackAction onPress={() => dispatch(StackActions.pop(1))} />
       <Appbar.Content title={currentPage.title} />
-      <Appbar.Action icon="plus" />
-      <Appbar.Action icon="delete" />
     </Appbar.Header>
   );
 };
