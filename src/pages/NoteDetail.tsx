@@ -1,21 +1,27 @@
+import React from 'react';
+
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '@types';
+import { INotes, RootStackParamList } from '@types';
 import { Text, View } from 'react-native';
-import { Button } from 'react-native-paper';
+import { Button, TextInput } from 'react-native-paper';
 
 import { Layout } from './Layout';
 
 type NoteDetailProps = NativeStackScreenProps<RootStackParamList, 'NoteDetail'>;
 
 export const NoteDetail: React.FC<NoteDetailProps> = ({ route }) => {
+  const [note, setNote] = React.useState<INotes>(route.params);
+  const onChange = (key: string, value: string): void => {
+    setNote({ ...note, [key]: value });
+  };
   return (
     <Layout page={route.name}>
       <View className="flex-1 p-3">
         <View className="flex">
-          <Text>{route.params.title}</Text>
+          <TextInput value={note.title} onChangeText={(value) => onChange('title', value)} />
         </View>
         <View className="flex-1">
-          <Text>{route.params.content}</Text>
+          <Text>{note.content}</Text>
         </View>
         <View className="flex flex-row justify-between">
           <Button mode="contained">Save</Button>
