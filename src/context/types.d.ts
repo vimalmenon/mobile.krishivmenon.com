@@ -10,6 +10,7 @@ import {
   IApi,
   IGeneric,
   INotes,
+  IProfile,
 } from '@types';
 import { DiscoveryDocument, TokenResponse } from 'expo-auth-session';
 
@@ -49,4 +50,17 @@ export interface IApis {
 export interface IUseApiHelper {
   makeApiCall: <K = unknown, T = unknown>(value: IApi<T>) => Promise<K>;
   apis: IApis;
+}
+
+export interface IUseNotesReturn {
+  notes: INotes[];
+  newNote: INotes;
+  addNote: IGeneric<INotes, Promise<void>>;
+  getNotes: IGenericReturn<Promise<void>>;
+  deleteNote: IGeneric<INotes, Promise<void>>;
+  loadingNotes: boolean;
+}
+
+export interface IUseProfileReturn {
+  profile: IProfile | undefined;
 }

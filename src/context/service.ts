@@ -21,6 +21,8 @@ import {
   IUseAuthReturn,
   IUseAuthHelperReturn,
   IUseApiHelper,
+  IUseNotesReturn,
+  IUseProfileReturn,
 } from './types';
 import { NotImplemented } from '../utility';
 
@@ -98,7 +100,7 @@ export const useAuthHelper: IGenericReturn<IUseAuthHelperReturn> = () => {
   };
 };
 
-export const useProfile = () => {
+export const useProfile: IGenericReturn<IUseProfileReturn> = () => {
   const { profile, setProfile } = React.useContext<IAppContext>(AppContext);
   const { makeApiCall, apis } = useApiHelper();
   React.useEffect(() => {
@@ -144,7 +146,7 @@ export const useApiHelper: IGenericReturn<IUseApiHelper> = () => {
   };
 };
 
-export const useNotes = () => {
+export const useNotes: IGenericReturn<IUseNotesReturn> = () => {
   const { loadingNotes, notes, setNotes, setLoadingNotes } =
     React.useContext<IAppContext>(AppContext);
   const { makeApiCall, apis } = useApiHelper();
@@ -162,8 +164,17 @@ export const useNotes = () => {
     setNotes(data);
     setLoadingNotes(false);
   };
+  const newNote: INotes = React.useMemo(
+    () => ({
+      title: '',
+      content: '',
+      metadata: {},
+    }),
+    []
+  );
   return {
     notes,
+    newNote,
     addNote,
     getNotes,
     deleteNote,

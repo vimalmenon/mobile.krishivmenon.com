@@ -27,8 +27,8 @@ export const Notes: React.FC<NotesProps> = ({ route }) => {
           </View>
         ) : (
           <View>
-            <View className="flex flex-row">
-              <Text>Notes</Text>
+            <View className="flex flex-row justify-between items-center m-2">
+              <Text className="text-xl font-bold text-gray-600">Notes</Text>
               <View>
                 <IconButton icon="plus" />
               </View>
