@@ -2,6 +2,7 @@ import React from 'react';
 
 import { AuthUrl } from '@data';
 import { LoginPage, Pages, PageMap } from '@pages/data';
+import { useNavigation } from '@react-navigation/native';
 import {
   IApi,
   IAppContext,
@@ -149,14 +150,18 @@ export const useApiHelper: IGenericReturn<IUseApiHelper> = () => {
 export const useNotes: IGenericReturn<IUseNotesReturn> = () => {
   const { loadingNotes, notes, setNotes, setLoadingNotes } =
     React.useContext<IAppContext>(AppContext);
+  const { goBack } = useNavigation();
   const { makeApiCall, apis } = useApiHelper();
   const addNote = async (note: INotes): Promise<void> => {
     const notes = await makeApiCall<INotes[], INotes>(apis.addNote(note));
     setNotes(notes);
   };
   const deleteNote = async (note: INotes): Promise<void> => {
+    setLoadingNotes(true);
     const notes = await makeApiCall<INotes[]>(apis.deleteNote(note.id || ''));
     setNotes(notes);
+    goBack();
+    setLoadingNotes(false);
   };
   const getNotes: IGenericReturn<Promise<void>> = async () => {
     setLoadingNotes(true);
