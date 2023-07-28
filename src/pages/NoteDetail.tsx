@@ -16,7 +16,7 @@ export const NoteDetail: React.FC<NoteDetailProps> = ({ route }) => {
   const onChange = (key: string, value: string): void => {
     setNote({ ...note, [key]: value });
   };
-  const { deleteNote, loadingNotes } = useNotes();
+  const { deleteNote, loadingNotes, saveNote } = useNotes();
   return (
     <Layout page={route.name}>
       {loadingNotes ? (
@@ -26,7 +26,9 @@ export const NoteDetail: React.FC<NoteDetailProps> = ({ route }) => {
       ) : (
         <>
           <View className="flex flex-row justify-between p-3">
-            <Button mode="contained">Save</Button>
+            <Button mode="contained" onPress={() => saveNote(note)}>
+              Save
+            </Button>
             <Button mode="contained" onPress={() => deleteNote(note)}>
               Delete
             </Button>

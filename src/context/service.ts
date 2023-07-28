@@ -152,8 +152,11 @@ export const useNotes: IGenericReturn<IUseNotesReturn> = () => {
     React.useContext<IAppContext>(AppContext);
   const { goBack } = useNavigation();
   const { makeApiCall, apis } = useApiHelper();
-  const addNote = async (note: INotes): Promise<void> => {
-    const notes = await makeApiCall<INotes[], INotes>(apis.addNote(note));
+  const saveNote = async (note: INotes): Promise<void> => {
+    const request = note.id ? apis.updateNote(note) : apis.addNote(note);
+    setLoadingNotes(true);
+    const notes = await makeApiCall<INotes[], INotes>(request);
+    setLoadingNotes(false);
     setNotes(notes);
   };
   const deleteNote = async (note: INotes): Promise<void> => {
@@ -180,7 +183,7 @@ export const useNotes: IGenericReturn<IUseNotesReturn> = () => {
   return {
     notes,
     newNote,
-    addNote,
+    saveNote,
     getNotes,
     deleteNote,
     loadingNotes,

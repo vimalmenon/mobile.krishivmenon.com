@@ -45,7 +45,6 @@ export const Notes: React.FC<NotesProps> = ({ route }) => {
                     onPress={() => dispatch(StackActions.push('NoteDetail', note))}
                   >
                     <Text className="text-2xl">{note.title}</Text>
-                    <IconButton icon="close" />
                   </TouchableOpacity>
                 );
               })}

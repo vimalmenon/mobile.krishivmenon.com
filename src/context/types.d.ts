@@ -55,7 +55,7 @@ export interface IUseApiHelper {
 export interface IUseNotesReturn {
   notes: INotes[];
   newNote: INotes;
-  addNote: IGeneric<INotes, Promise<void>>;
+  saveNote: IGeneric<INotes, Promise<void>>;
   getNotes: IGenericReturn<Promise<void>>;
   deleteNote: IGeneric<INotes, Promise<void>>;
   loadingNotes: boolean;
