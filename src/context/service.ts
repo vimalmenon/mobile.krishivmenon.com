@@ -124,7 +124,7 @@ export const useApiHelper: IGenericReturn<IUseApiHelper> = () => {
     () =>
       axios.create({
         headers: {
-          Authorization: authTokens?.idToken || '',
+          Authorization: authTokens?.idToken ?? '',
         },
       }),
     [authTokens?.idToken]
@@ -161,7 +161,7 @@ export const useNotes: IGenericReturn<IUseNotesReturn> = () => {
   };
   const deleteNote = async (note: INotes): Promise<void> => {
     setLoadingNotes('DeletingNote');
-    const notes = await makeApiCall<INotes[]>(apis.deleteNote(note.id || ''));
+    const notes = await makeApiCall<INotes[]>(apis.deleteNote(note.id ?? ''));
     setNotes(notes);
     goBack();
     setLoadingNotes(undefined);

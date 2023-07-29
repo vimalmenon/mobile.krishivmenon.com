@@ -73,7 +73,7 @@ export const AppContext: React.FC<ReactChildren> = ({ children }) => {
           redirectUri,
           clientSecret: ClientSecret,
           extraParams: {
-            code_verifier: request?.codeVerifier || '',
+            code_verifier: request?.codeVerifier ?? '',
           },
         });
       }
@@ -87,7 +87,7 @@ export const AppContext: React.FC<ReactChildren> = ({ children }) => {
         {
           clientId: ClientId,
           clientSecret: ClientSecret,
-          token: authTokens.refreshToken || '',
+          token: authTokens.refreshToken ?? '',
         },
         discoveryDocument
       );
