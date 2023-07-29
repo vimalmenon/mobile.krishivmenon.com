@@ -11,6 +11,7 @@ import {
   IGeneric,
   INotes,
   IProfile,
+  LoadingNotesType,
 } from '@types';
 import { DiscoveryDocument, TokenResponse } from 'expo-auth-session';
 
@@ -58,7 +59,7 @@ export interface IUseNotesReturn {
   saveNote: IGeneric<INotes, Promise<void>>;
   getNotes: IGenericReturn<Promise<void>>;
   deleteNote: IGeneric<INotes, Promise<void>>;
-  loadingNotes: boolean;
+  loadingNotes: LoadingNotesType;
 }
 
 export interface IUseProfileReturn {

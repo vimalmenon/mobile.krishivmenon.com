@@ -1,7 +1,15 @@
 import React from 'react';
 
 import { LoginPage, HomePage } from '@pages/data';
-import { ReactChildren, IGenericReturn, AuthType, IPage, INotes, IProfile } from '@types';
+import {
+  ReactChildren,
+  IGenericReturn,
+  AuthType,
+  IPage,
+  INotes,
+  IProfile,
+  LoadingNotesType,
+} from '@types';
 import {
   useAuthRequest,
   exchangeCodeAsync,
@@ -19,7 +27,7 @@ export const AppContext: React.FC<ReactChildren> = ({ children }) => {
   const [drawerOpen, setDrawerOpen] = React.useState<boolean>(false);
 
   // Notes
-  const [loadingNotes, setLoadingNotes] = React.useState<boolean>(true);
+  const [loadingNotes, setLoadingNotes] = React.useState<LoadingNotesType>(undefined);
   const [notes, setNotes] = React.useState<INotes[]>([]);
 
   // Profile

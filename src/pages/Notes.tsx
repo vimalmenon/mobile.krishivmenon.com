@@ -9,6 +9,7 @@ import { Text, View, TouchableOpacity } from 'react-native';
 import { IconButton } from 'react-native-paper';
 
 import { Layout } from './Layout';
+import { loadingNotesMessage } from './service';
 
 type NotesProps = NativeStackScreenProps<RootStackParamList, 'Notes'>;
 
@@ -23,7 +24,7 @@ export const Notes: React.FC<NotesProps> = ({ route }) => {
       <View className="flex-1">
         {loadingNotes ? (
           <View className="flex-1">
-            <Loading text="Loading Notes" />
+            <Loading text={loadingNotesMessage(loadingNotes)} />
           </View>
         ) : (
           <View>

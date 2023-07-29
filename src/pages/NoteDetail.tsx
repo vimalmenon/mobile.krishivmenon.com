@@ -8,6 +8,7 @@ import { View } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 
 import { Layout } from './Layout';
+import { loadingNotesMessage } from './service';
 
 type NoteDetailProps = NativeStackScreenProps<RootStackParamList, 'NoteDetail'>;
 
@@ -21,7 +22,7 @@ export const NoteDetail: React.FC<NoteDetailProps> = ({ route }) => {
     <Layout page={route.name}>
       {loadingNotes ? (
         <View className="flex-1">
-          <Loading text="Deleting Note" />
+          <Loading text={loadingNotesMessage(loadingNotes)} />
         </View>
       ) : (
         <>

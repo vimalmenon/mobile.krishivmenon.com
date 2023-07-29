@@ -37,7 +37,7 @@ export const AppContext = React.createContext<IAppContext>({
   setAuthTokens: NotImplemented,
   promptAsync: NotImplemented,
   logout: NotImplemented,
-  loadingNotes: false,
+  loadingNotes: undefined,
   setLoadingNotes: NotImplemented,
   notes: [],
   setNotes: NotImplemented,
@@ -154,23 +154,23 @@ export const useNotes: IGenericReturn<IUseNotesReturn> = () => {
   const { makeApiCall, apis } = useApiHelper();
   const saveNote = async (note: INotes): Promise<void> => {
     const request = note.id ? apis.updateNote(note) : apis.addNote(note);
-    setLoadingNotes(true);
+    setLoadingNotes('SavingNote');
     const notes = await makeApiCall<INotes[], INotes>(request);
-    setLoadingNotes(false);
+    setLoadingNotes(undefined);
     setNotes(notes);
   };
   const deleteNote = async (note: INotes): Promise<void> => {
-    setLoadingNotes(true);
+    setLoadingNotes('DeletingNote');
     const notes = await makeApiCall<INotes[]>(apis.deleteNote(note.id || ''));
     setNotes(notes);
     goBack();
-    setLoadingNotes(false);
+    setLoadingNotes(undefined);
   };
   const getNotes: IGenericReturn<Promise<void>> = async () => {
-    setLoadingNotes(true);
+    setLoadingNotes('LoadingNotes');
     const data = await makeApiCall<INotes[]>(apis.getNotes());
     setNotes(data);
-    setLoadingNotes(false);
+    setLoadingNotes(undefined);
   };
   const newNote: INotes = React.useMemo(
     () => ({

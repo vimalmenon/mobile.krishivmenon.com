@@ -17,6 +17,8 @@ export type Pages = 'Home' | 'Gallery' | 'Notes' | 'Login' | 'NoteDetail';
 
 export type PageType = 'Common' | 'Note' | undefined;
 
+export type LoadingNotesType = 'LoadingNotes' | 'DeletingNote' | 'SavingNote' | undefined;
+
 export type PromptAsyncType = (options?: AuthRequestPromptOptions) => Promise<AuthSessionResult>;
 
 export type RootStackParamList = {
@@ -51,8 +53,8 @@ export interface IAppContext {
   setAuthTokens: Dispatch<SetStateAction<TokenResponse | undefined>>;
   promptAsync: PromptAsyncType;
   logout: IGenericReturn<Promise<void>>;
-  loadingNotes: boolean;
-  setLoadingNotes: Dispatch<SetStateAction<boolean>>;
+  loadingNotes: LoadingNotesType;
+  setLoadingNotes: Dispatch<SetStateAction<LoadingNotesType>>;
   notes: INotes[];
   setNotes: Dispatch<SetStateAction<INotes[]>>;
   profile: IProfile | undefined;
